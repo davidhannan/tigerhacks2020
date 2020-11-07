@@ -1,0 +1,85 @@
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@magenta/music@1.4.2/dist/magentamusic.min.js"></script>
+ <script>
+     let drums_rnn = mm.MusicRNN("https://storage.googleapis.com/download.magenta.tensorflow.org/tfjs_checkpoints/music_rnn/drum_kit_rnn");
+     drums_rnn.initialize();
+     var seed_pattern = [
+	    [0, 2], 
+	    [], 
+	    [2], 
+	    [], 
+	    [2], 
+	    [], 
+	    [0, 2], 
+	    [], 
+	    [1, 2], 
+	    []
+    ];
+
+    let cur_seq = drum_to_note_sequence(seed_pattern);
+
+//---------------------------------
+// drum to note sequence formation
+//---------------------------------
+function drum_to_note_sequence(quantize_tensor) {
+	var notes_array = [];
+	var note_index = 0;
+	for (var i = 0; i < quantize_tensor.length; i++) {
+		var notes = quantize_tensor[i];
+		if(notes.length > 0) {
+			for (var j = 0; j < notes.length; j++) {
+				notes_array[note_index] = {};
+				notes_array[note_index]["pitch"] = midiDrums[notes[j]];
+				notes_array[note_index]["startTime"] = i * 0.5;
+				notes_array[note_index]["endTime"] = (i+1) * 0.5;
+				note_index = note_index + 1;
+			}
+		}
+	}
+
+	return mm.sequences.quantizeNoteSequence(
+	  {
+	    ticksPerQuarter: 220,
+	    totalTime: quantize_tensor.length / 2,
+	    timeSignatures: [
+	      {
+	        time: 0,
+	        numerator: ts_num,
+	        denominator: ts_den
+	      }
+	    ],
+	    tempos: [
+	      {
+	        time: 0,
+	        qpm: tempo
+	      }
+	    ],
+	    notes: notes_array
+	   },
+	  1
+	);
+}
+
+    const player_length = 32;
+    const temperature_drum = 1;
+
+    predicted_sequence = await drums_rnn
+		.continueSequence(cur_seq, player_length, temperature_drum)
+		.then(r => seed_pattern.concat(note_to_drum_sequence(r, player_length)));
+
+    //---------------------------------
+    // note to drum sequence formation
+    //---------------------------------
+    function note_to_drum_sequence(seq, pLength) {
+	    let res = [];
+	    for (var i = 0; i < pLength; i++) {
+		    empty_list = [];
+		    res.push(empty_list);
+	    }
+        for (let { pitch, quantizedStartStep } of seq.notes) {
+            res[quantizedStartStep].push(reverseMidiMapping.get(pitch));
+        }
+        return res;
+    }
+
+
+ </script>
