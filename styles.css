@@ -1,0 +1,57 @@
+.burger {
+    /* The cheese, meat, and lettuce */
+  }
+  
+.burger:before {
+    content: ""; 
+    display: block;
+
+    /* Space between the buns */
+    width: 400px;
+    height: 55px;
+
+    /* Top bun */
+    border-top: 80px solid #f5b230;
+
+    /* Bottom bun */
+    border-bottom: 50px solid #f5b230;
+
+
+    /* Same code as previously */
+    content: ""; 
+    display: block;
+    width: 600px;
+    height: 400px;
+    border-top: 120px solid #f5b230;
+    border-bottom: 100px solid #f5b230;
+
+    /* New line */
+    border-radius: 15% 15% 10% 10%;
+  }
+  
+.burger:after {
+    content: "";
+    display: block;
+
+    /* Size and shape */
+    width: 10px;
+    height: 6px;
+    border-radius: 40%;
+
+    /* Position and color */
+    box-shadow: 
+    /* Top row */
+    80px -585px #ffffff,
+    190px -585px #ffffff,
+    300px -585px #ffffff,
+    410px -585px #ffffff,
+    520px -585px #ffffff,
+
+    /* Bottom row */
+    40px -540px #ffffff,
+    130px -540px #ffffff,
+    240px -540px #ffffff,
+    350px -540px #ffffff,
+    470px -540px #ffffff,
+    560px -540px #ffffff;
+  }
