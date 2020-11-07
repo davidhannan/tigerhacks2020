@@ -1,263 +1,276 @@
-<script type="text/javascript"
-	src="https://cdn.jsdelivr.net/npm/@magenta/music@1.4.2/dist/magentamusic.min.js"></script>
+<html lang="en">
 
-<script type="text/javascript" src="js/reverse_midi_map.js"></script>
-<script type="text/javascript" src="js/tone.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<head>
+	<meta charset="utf-8">
+	<link rel="icon" href="favicon.ico" type="image/x-icon"> 
+	<title>Burger Drums</title>
+</head>
 
-<button id="load"> Load </button>
-<button id="play"> Play </button>
-<button id="stop" display="none"> Stop </button>
+<body>
 
+	<script type="text/javascript"
+		src="https://cdn.jsdelivr.net/npm/@magenta/music@1.4.2/dist/magentamusic.min.js"></script>
 
-<script>
+	<script type="text/javascript" src="js/reverse_midi_map.js"></script>
+	<script type="text/javascript" src="js/tone.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-	//--------------
-	//variables to init at runtime
-	//--------------
-	var ts_num = 4;
-	var ts_den = 4;
-	var tempo = 115;
-
-	const TIME_FUTURE = 0.05;
-	const start = 0;
-	var count = start;
-	var playing = false;
-
-	//--------------
-	//temp variables that can be made into dials and other selectors
-	//--------------
-	var kitType = "analog";
-	var dial_tempo = 115;
-	var boolPlayMode = 0;
-	var playedOnce = 0;
-	//player_length is the amount of notes to generate AFTER the seed. so play_length=40 is in total length 48
-	const player_length = 40;
-	//I think turning this up will make the generated beat have more notes
-	const temperature_drum = 1;
-
-	//--------------
-	//temporary call to hide buttons until load is clicked
-	//--------------
-	$("#play").hide();
-	$("#stop").hide();
-
-	var instrument_player = [
-		"sounds/drum-kits/" + kitType + "/kick.mp3",
-		"sounds/drum-kits/" + kitType + "/snare.mp3",
-		"sounds/drum-kits/" + kitType + "/hihat-closed.mp3",
-		"sounds/drum-kits/" + kitType + "/hihat-open.mp3",
-		"sounds/drum-kits/" + kitType + "/tom-low.mp3",
-		"sounds/drum-kits/" + kitType + "/tom-mid.mp3",
-		"sounds/drum-kits/" + kitType + "/tom-high.mp3",
-		"sounds/drum-kits/" + kitType + "/clap.mp3",
-		"sounds/drum-kits/" + kitType + "/ride.mp3"
-	];
-
-	loadPlayers();
-
-	function loadPlayers() {
-		drum_kick = new Tone.Player(instrument_player[0]).toMaster();
-		drum_snare = new Tone.Player(instrument_player[1]).toMaster();
-		drum_hihat_closed = new Tone.Player(instrument_player[2]).toMaster();
-		drum_hihat_open = new Tone.Player(instrument_player[3]).toMaster();
-		drum_tom_low = new Tone.Player(instrument_player[4]).toMaster();
-		drum_tom_mid = new Tone.Player(instrument_player[5]).toMaster();
-		drum_tom_high = new Tone.Player(instrument_player[6]).toMaster();
-		drum_clap = new Tone.Player(instrument_player[7]).toMaster();
-		drum_ride = new Tone.Player(instrument_player[8]).toMaster();
-	}
-
-	async function loadTone() {
-		await Tone.start();
-		console.log('Tone.js is Ready');
-	}
+	<button id="load"> Load </button>
+	<button id="play"> Play </button>
+	<button id="stop" display="none"> Stop </button>
 
 
+	<script>
 
-	function playInstrument(row_value) {
-		if (row_value == 0) {
-			drum_kick.start();
-		} else if (row_value == 1) {
-			drum_snare.start();
-		} else if (row_value == 2) {
-			drum_hihat_closed.start();
-		} else if (row_value == 3) {
-			drum_hihat_open.start();
-		} else if (row_value == 4) {
-			drum_tom_low.start();
-		} else if (row_value == 5) {
-			drum_tom_mid.start();
-		} else if (row_value == 6) {
-			drum_tom_high.start();
-		} else if (row_value == 7) {
-			drum_clap.start();
-		} else if (row_value == 8) {
-			drum_ride.start();
-		}
-	}
+		//--------------
+		//variables to init at runtime
+		//--------------
+		var ts_num = 4;
+		var ts_den = 4;
+		var tempo = 115;
 
-	document.querySelector("#load").addEventListener("click", function () {
-		$("#play").show();
-		$("#stop").show();
-		$("#load").hide();
-		loadTone();
-	});
+		const TIME_FUTURE = 0.05;
+		const start = 0;
+		var count = start;
+		var playing = false;
 
-	document.querySelector("#play").addEventListener("click", function () {
+		//--------------
+		//temp variables that can be made into dials and other selectors
+		//--------------
+		var kitType = "analog";
+		var dial_tempo = 115;
+		var boolPlayMode = 0;
+		var playedOnce = 0;
+		//player_length is the amount of notes to generate AFTER the seed. so play_length=40 is in total length 48
+		const player_length = 40;
+		//I think turning this up will make the generated beat have more notes
+		const temperature_drum = 1;
+
+		//--------------
+		//temporary call to hide buttons until load is clicked
+		//--------------
 		$("#play").hide();
-		$("#stop").show();
-		scheduleTimeOn();
-	});
-
-	document.querySelector("#stop").addEventListener("click", function () {
 		$("#stop").hide();
-		$("#play").show();
-		scheduleTimeOff();
-	});
 
-	//------------------------------
-	// master scheduler time ON
-	//------------------------------
-	function scheduleTimeOn() {
-		tempo = dial_tempo;
-		Tone.Transport.bpm.value = tempo;
+		var instrument_player = [
+			"sounds/drum-kits/" + kitType + "/kick.mp3",
+			"sounds/drum-kits/" + kitType + "/snare.mp3",
+			"sounds/drum-kits/" + kitType + "/hihat-closed.mp3",
+			"sounds/drum-kits/" + kitType + "/hihat-open.mp3",
+			"sounds/drum-kits/" + kitType + "/tom-low.mp3",
+			"sounds/drum-kits/" + kitType + "/tom-mid.mp3",
+			"sounds/drum-kits/" + kitType + "/tom-high.mp3",
+			"sounds/drum-kits/" + kitType + "/clap.mp3",
+			"sounds/drum-kits/" + kitType + "/ride.mp3"
+		];
 
-		Tone.Transport.scheduleRepeat(playPattern, "16n");
+		loadPlayers();
 
-		Tone.Transport.start();
-		playing = true;
-	}
-
-	//------------------------------
-	// master scheduler time OFF
-	//------------------------------
-	function scheduleTimeOff() {
-		Tone.Transport.stop();
-		count = 0;
-		chordIdx = 0;
-		bassIdx = 0;
-		arpCount = 0;
-		step = 0;
-		gen_arp_idx = 0;
-		indicator_count = 0;
-		count_display_timeline = 0;
-		Tone.Transport.cancel();
-		playing = false;
-	}
-
-
-	//------------------------------
-	// PLAY
-	//------------------------------
-	function playPattern(time) {
-
-		//iterate through drum sequence to play sounds
-		for (let x = 0; x < sequence[count].length; x++) {
-			playInstrument(sequence[count][x]);
+		function loadPlayers() {
+			drum_kick = new Tone.Player(instrument_player[0]).toMaster();
+			drum_snare = new Tone.Player(instrument_player[1]).toMaster();
+			drum_hihat_closed = new Tone.Player(instrument_player[2]).toMaster();
+			drum_hihat_open = new Tone.Player(instrument_player[3]).toMaster();
+			drum_tom_low = new Tone.Player(instrument_player[4]).toMaster();
+			drum_tom_mid = new Tone.Player(instrument_player[5]).toMaster();
+			drum_tom_high = new Tone.Player(instrument_player[6]).toMaster();
+			drum_clap = new Tone.Player(instrument_player[7]).toMaster();
+			drum_ride = new Tone.Player(instrument_player[8]).toMaster();
 		}
 
-		//reset count when reaching end of array
-		count = count + 1;
-		if (count >= sequence.length) {
-			count = start;
+		async function loadTone() {
+			await Tone.start();
+			console.log('Tone.js is Ready');
 		}
-	}
 
 
 
-	//Machine learning stuff
-
-
-	//this is getting the model for the machine learning
-	let drums_rnn = new mm.MusicRNN("https://storage.googleapis.com/download.magenta.tensorflow.org/tfjs_checkpoints/music_rnn/drum_kit_rnn");
-	drums_rnn.initialize();
-
-	//Seed for pattern
-	var seed_pattern = [
-		[0, 2],
-		[],
-		[1, 7],
-		[],
-		[0, 2],
-		[],
-		[1, 7],
-		[]
-	];
-
-	//called at runtime but shouldnt be later on
-	let cur_seq = drum_to_note_sequence(seed_pattern);
-
-	//---------------------------------
-	// drum to note sequence formation
-	//---------------------------------
-	function drum_to_note_sequence(quantize_tensor) {
-		var notes_array = [];
-		var note_index = 0;
-		for (var i = 0; i < quantize_tensor.length; i++) {
-			var notes = quantize_tensor[i];
-			if (notes.length > 0) {
-				for (var j = 0; j < notes.length; j++) {
-					notes_array[note_index] = {};
-					notes_array[note_index]["pitch"] = notes[j];
-					notes_array[note_index]["startTime"] = i * 0.5;
-					notes_array[note_index]["endTime"] = (i + 1) * 0.5;
-					note_index = note_index + 1;
-				}
+		function playInstrument(row_value) {
+			if (row_value == 0) {
+				drum_kick.start();
+			} else if (row_value == 1) {
+				drum_snare.start();
+			} else if (row_value == 2) {
+				drum_hihat_closed.start();
+			} else if (row_value == 3) {
+				drum_hihat_open.start();
+			} else if (row_value == 4) {
+				drum_tom_low.start();
+			} else if (row_value == 5) {
+				drum_tom_mid.start();
+			} else if (row_value == 6) {
+				drum_tom_high.start();
+			} else if (row_value == 7) {
+				drum_clap.start();
+			} else if (row_value == 8) {
+				drum_ride.start();
 			}
 		}
 
-		return mm.sequences.quantizeNoteSequence(
-			{
-				ticksPerQuarter: 220,
-				totalTime: quantize_tensor.length / 2,
-				timeSignatures: [
-					{
-						time: 0,
-						numerator: ts_num,
-						denominator: ts_den
-					}
-				],
-				tempos: [
-					{
-						time: 0,
-						qpm: tempo
-					}
-				],
-				notes: notes_array
-			},
-			1
-		);
-	}
+		document.querySelector("#load").addEventListener("click", function () {
+			$("#play").show();
+			$("#stop").show();
+			$("#load").hide();
+			loadTone();
+		});
 
-	//sequenceInit is called from runtime though it shouldnt be later on
-	sequenceInit();
-	let sequence;
+		document.querySelector("#play").addEventListener("click", function () {
+			$("#play").hide();
+			$("#stop").show();
+			scheduleTimeOn();
+		});
 
-	async function sequenceInit() {
+		document.querySelector("#stop").addEventListener("click", function () {
+			$("#stop").hide();
+			$("#play").show();
+			scheduleTimeOff();
+		});
 
-		predicted_sequence = await drums_rnn
-			.continueSequence(cur_seq, player_length, temperature_drum)
-			.then(r => seed_pattern.concat(note_to_drum_sequence(r, player_length)));
-		console.log(predicted_sequence);
+		//------------------------------
+		// master scheduler time ON
+		//------------------------------
+		function scheduleTimeOn() {
+			tempo = dial_tempo;
+			Tone.Transport.bpm.value = tempo;
 
-		sequence = predicted_sequence;
-	}
+			Tone.Transport.scheduleRepeat(playPattern, "16n");
 
-
-	//---------------------------------
-	// note to drum sequence formation
-	//---------------------------------
-	function note_to_drum_sequence(seq, pLength) {
-		let res = [];
-		for (var i = 0; i < pLength; i++) {
-			empty_list = [];
-			res.push(empty_list);
+			Tone.Transport.start();
+			playing = true;
 		}
-		for (let { pitch, quantizedStartStep } of seq.notes) {
-			res[quantizedStartStep].push(reverseMidiMapping.get(pitch));
-		}
-		return res;
-	}
 
-</script>
+		//------------------------------
+		// master scheduler time OFF
+		//------------------------------
+		function scheduleTimeOff() {
+			Tone.Transport.stop();
+			count = 0;
+			chordIdx = 0;
+			bassIdx = 0;
+			arpCount = 0;
+			step = 0;
+			gen_arp_idx = 0;
+			indicator_count = 0;
+			count_display_timeline = 0;
+			Tone.Transport.cancel();
+			playing = false;
+		}
+
+
+		//------------------------------
+		// PLAY
+		//------------------------------
+		function playPattern(time) {
+
+			//iterate through drum sequence to play sounds
+			for (let x = 0; x < sequence[count].length; x++) {
+				playInstrument(sequence[count][x]);
+			}
+
+			//reset count when reaching end of array
+			count = count + 1;
+			if (count >= sequence.length) {
+				count = start;
+			}
+		}
+
+
+
+		//Machine learning stuff
+
+
+		//this is getting the model for the machine learning
+		let drums_rnn = new mm.MusicRNN("https://storage.googleapis.com/download.magenta.tensorflow.org/tfjs_checkpoints/music_rnn/drum_kit_rnn");
+		drums_rnn.initialize();
+
+		//Seed for pattern
+		var seed_pattern = [
+			[0, 2],
+			[],
+			[1, 7],
+			[],
+			[0, 2],
+			[],
+			[1, 7],
+			[]
+		];
+
+		//called at runtime but shouldnt be later on
+		let cur_seq = drum_to_note_sequence(seed_pattern);
+
+		//---------------------------------
+		// drum to note sequence formation
+		//---------------------------------
+		function drum_to_note_sequence(quantize_tensor) {
+			var notes_array = [];
+			var note_index = 0;
+			for (var i = 0; i < quantize_tensor.length; i++) {
+				var notes = quantize_tensor[i];
+				if (notes.length > 0) {
+					for (var j = 0; j < notes.length; j++) {
+						notes_array[note_index] = {};
+						notes_array[note_index]["pitch"] = notes[j];
+						notes_array[note_index]["startTime"] = i * 0.5;
+						notes_array[note_index]["endTime"] = (i + 1) * 0.5;
+						note_index = note_index + 1;
+					}
+				}
+			}
+
+			return mm.sequences.quantizeNoteSequence(
+				{
+					ticksPerQuarter: 220,
+					totalTime: quantize_tensor.length / 2,
+					timeSignatures: [
+						{
+							time: 0,
+							numerator: ts_num,
+							denominator: ts_den
+						}
+					],
+					tempos: [
+						{
+							time: 0,
+							qpm: tempo
+						}
+					],
+					notes: notes_array
+				},
+				1
+			);
+		}
+
+		//sequenceInit is called from runtime though it shouldnt be later on
+		sequenceInit();
+		let sequence;
+
+		async function sequenceInit() {
+
+			predicted_sequence = await drums_rnn
+				.continueSequence(cur_seq, player_length, temperature_drum)
+				.then(r => seed_pattern.concat(note_to_drum_sequence(r, player_length)));
+			console.log(predicted_sequence);
+
+			sequence = predicted_sequence;
+		}
+
+
+		//---------------------------------
+		// note to drum sequence formation
+		//---------------------------------
+		function note_to_drum_sequence(seq, pLength) {
+			let res = [];
+			for (var i = 0; i < pLength; i++) {
+				empty_list = [];
+				res.push(empty_list);
+			}
+			for (let { pitch, quantizedStartStep } of seq.notes) {
+				res[quantizedStartStep].push(reverseMidiMapping.get(pitch));
+			}
+			return res;
+		}
+
+	</script>
+</body>
+
+</html>
