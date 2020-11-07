@@ -11,21 +11,72 @@
 			height: 100%;
 			margin: 0px;
 			padding: 0px;
+
 		}
 
 		.drum-container {
-			width: 100%;
-			height: 100%;
+			width: 800px;
+			height: 200px;
+			background-color: goldenrod;
+			border-radius: 200px 200px 0px 0px;
+			padding-top: 60px;
+			padding-bottom: 20px;
+
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			margin: auto;
+		}
+
+		
+		.bottom-bun {
+			width: 800px;
+			height: 200px;
+			background-color: goldenrod;
+			border-radius: 0px 0px 200px 200px;
+			margin: 5px auto;
+		}
+
+		.patty {
+			width: 900px;
+			height: 100px;
+			background-color: #681f24;
+			border-radius: 500px;
+			margin: -5px auto;
+
+		}
+
+		.cheese {
+			width: 850px;
+			height: 50px;
+			background-color: #fddb28;
+			margin: auto;
+			border-radius: -10px 15px;
+			font-size: 200px;
+			color: #fddb28;
+			padding-top: -20px;
+			text-align: right;
+			position: relative;
+		}
+		.cheese-corner {
+			height: 40px;
+			margin-top: 50px;
+			position: absolute;
+			top: -90px;
+			right: 30px;
 		}
 
 		.drum-row {
 			width: 100%;
-			height: 30px;
+			height: 25px;
+			margin-left: 50px;
 		}
 
 		.drum-row-title {
-			width: 20%;
+			width: 10%;
 			margin: 0px;
+			padding-right: 30px ;
+			text-align: right;
 		}
 
 		.drum-row>div {
@@ -33,15 +84,30 @@
 		}
 
 		.deepdrum-on {
-			background-color: lightgoldenrodyellow;
-			border: 1px solid lightgray ;
-			border-radius: 2px;
+			background-color: rgb(247, 247, 230) !important;
+			border: 1px solid lightgray;
 		}
 
-		button{
+		button {
 			margin-top: 5px;
 			margin-bottom: 5px;
 		}
+
+		.drum-inputs {
+			width: 70%;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+		}
+
+		.deepdrum-step-buttons{
+			height: 16px;
+			width: 26px;
+			background-color: #f0d0a5;
+			border: 1px solid lightgray;
+			border-radius: 8px;
+		}
+
 	</style>
 </head>
 
@@ -83,7 +149,7 @@
 			</div>
 		</div>
 		<div class="drum-row">
-			<div class="drum-row-title"  id="label_1">
+			<div class="drum-row-title" id="label_1">
 				Snare
 			</div>
 			<div class="drum-inputs">
@@ -106,7 +172,7 @@
 			</div>
 		</div>
 		<div class="drum-row">
-			<div class="drum-row-title"  id="label_2">
+			<div class="drum-row-title" id="label_2">
 				hihat closed
 			</div>
 			<div class="drum-inputs">
@@ -129,7 +195,7 @@
 			</div>
 		</div>
 		<div class="drum-row">
-			<div class="drum-row-title"  id="label_3">
+			<div class="drum-row-title" id="label_3">
 				hihat open
 			</div>
 			<div class="drum-inputs">
@@ -152,7 +218,7 @@
 			</div>
 		</div>
 		<div class="drum-row">
-			<div class="drum-row-title"  id="label_4">
+			<div class="drum-row-title" id="label_4">
 				tom low
 			</div>
 			<div class="drum-inputs">
@@ -175,7 +241,7 @@
 			</div>
 		</div>
 		<div class="drum-row">
-			<div class="drum-row-title"  id="label_5">
+			<div class="drum-row-title" id="label_5">
 				tom mid
 			</div>
 			<div class="drum-inputs">
@@ -198,7 +264,7 @@
 			</div>
 		</div>
 		<div class="drum-row">
-			<div class="drum-row-title"  id="label_6">
+			<div class="drum-row-title" id="label_6">
 				tom high
 			</div>
 			<div class="drum-inputs">
@@ -221,7 +287,7 @@
 			</div>
 		</div>
 		<div class="drum-row">
-			<div class="drum-row-title"  id="label_7">
+			<div class="drum-row-title" id="label_7">
 				clap
 			</div>
 			<div class="drum-inputs">
@@ -244,7 +310,7 @@
 			</div>
 		</div>
 		<div class="drum-row">
-			<div class="drum-row-title"  id="label_8">
+			<div class="drum-row-title" id="label_8">
 				ride
 			</div>
 			<div class="drum-inputs">
@@ -266,9 +332,16 @@
 					style="margin-right: 1px;">
 			</div>
 		</div>
-		
-		<button id="generate"> Generate Beat </button>
+
 	</div>
+
+	<div class="cheese"> <span class="cheese-corner">▾</span></div>
+
+	<div class="patty"></div>
+
+	<div class="bottom-bun"></div>
+	
+	<button id="generate"> Generate Beat </button>
 
 
 
@@ -388,7 +461,7 @@
 			scheduleTimeOff();
 		});
 
-		document.querySelector("#generate").addEventListener("click", function(){
+		document.querySelector("#generate").addEventListener("click", function () {
 			let cur_seq = drum_to_note_sequence(seed_pattern);
 			sequenceInit();
 		});
@@ -403,16 +476,16 @@
 			for (var x = 0; x < stepButtons.length; x++) {
 				stepButtons[x].addEventListener("click", function (event) {
 					button = event.target;
-					
+
 					let index = parseInt(button.id.split("_")[2]);
 					let sound = parseInt(button.id.split("_")[1]);
 
 					if (button.classList.contains("deepdrum-on")) {
 						button.classList.remove("deepdrum-on");
-						
+
 						seed_pattern[index].splice(seed_pattern[index].indexOf("sound"), 1);
-						console.log("index "+ index + " sound "+ sound);
-						
+						console.log("index " + index + " sound " + sound);
+
 					}
 					else {
 						button.classList.add("deepdrum-on");
@@ -435,9 +508,9 @@
 		// Load default seed into buttons
 		//------------------------------
 		loadSeed();
-		function loadSeed(){
-			for(var x=0; x < seed_pattern.length; x++){
-				for(var y = 0; y< seed_pattern[x].length; y++){
+		function loadSeed() {
+			for (var x = 0; x < seed_pattern.length; x++) {
+				for (var y = 0; y < seed_pattern[x].length; y++) {
 					document.querySelector("#drum_" + seed_pattern[x][y] + "_" + x).classList.add("deepdrum-on");
 				}
 			}
