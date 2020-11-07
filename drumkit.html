@@ -33,7 +33,8 @@
 		}
 
 		.deepdrum-on {
-			background-color: red;
+			background-color: lightgoldenrodyellow;
+			border: 1px solid lightgray ;
 			border-radius: 2px;
 		}
 
@@ -281,21 +282,21 @@
 		var tempo = 115;
 
 		const TIME_FUTURE = 0.05;
-		const start = 0;
+		const start = 8;
 		var count = start;
 		var playing = false;
 
 		//--------------
 		//temp variables that can be made into dials and other selectors
 		//--------------
-		var kitType = "analog";
-		var dial_tempo = 115;
+		var kitType = "hiphop";
+		var dial_tempo = 100;
 		var boolPlayMode = 0;
 		var playedOnce = 0;
 		//player_length is the amount of notes to generate AFTER the seed. so play_length=40 is in total length 48
-		const player_length = 40;
+		const player_length = 16;
 		//I think turning this up will make the generated beat have more notes
-		const temperature_drum = 1;
+		const temperature_drum = 1.5;
 		//Seed for pattern
 		var seed_pattern = [
 			[0, 2],
@@ -347,25 +348,25 @@
 
 
 
-		function playInstrument(row_value) {
+		function playInstrument(row_value, time) {
 			if (row_value == 0) {
-				drum_kick.start();
+				drum_kick.start(time + TIME_FUTURE);
 			} else if (row_value == 1) {
-				drum_snare.start();
+				drum_snare.start(time + TIME_FUTURE);
 			} else if (row_value == 2) {
-				drum_hihat_closed.start();
+				drum_hihat_closed.start(time + TIME_FUTURE);
 			} else if (row_value == 3) {
-				drum_hihat_open.start();
+				drum_hihat_open.start(time + TIME_FUTURE);
 			} else if (row_value == 4) {
-				drum_tom_low.start();
+				drum_tom_low.start(time + TIME_FUTURE);
 			} else if (row_value == 5) {
-				drum_tom_mid.start();
+				drum_tom_mid.start(time + TIME_FUTURE);
 			} else if (row_value == 6) {
-				drum_tom_high.start();
+				drum_tom_high.start(time + TIME_FUTURE);
 			} else if (row_value == 7) {
-				drum_clap.start();
+				drum_clap.start(time + TIME_FUTURE);
 			} else if (row_value == 8) {
-				drum_ride.start();
+				drum_ride.start(time + TIME_FUTURE);
 			}
 		}
 
@@ -480,7 +481,7 @@
 
 			//iterate through drum sequence to play sounds
 			for (let x = 0; x < sequence[count].length; x++) {
-				playInstrument(sequence[count][x]);
+				playInstrument(sequence[count][x], time);
 			}
 
 			//reset count when reaching end of array
