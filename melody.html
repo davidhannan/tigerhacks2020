@@ -1,0 +1,36 @@
+<script type="text/javascript"
+		src="https://cdn.jsdelivr.net/npm/@magenta/music@1.4.2/dist/magentamusic.min.js"></script>
+<script>
+
+
+const melodyrnn = new mm.MusicRNN(
+"https://storage.googleapis.com/magentadata/js/checkpoints/music_rnn/melody_rnn"
+)
+
+var noteSeq = [
+  { pitch: 72, quantizedStartStep: 0, quantizedEndStep: 2 },
+  { pitch: 76, quantizedStartStep: 2, quantizedEndStep: 3 },
+  { pitch: 79, quantizedStartStep: 3, quantizedEndStep: 4 }
+];
+
+
+const seedSeq = {
+  totalQuantizedSteps: 4,
+  quantizationInfo: { stepsPerQuarter: 1 },
+  notes: noteSeq
+}
+
+async function newSeq(){
+  try{
+    let resultSeq = await melodyrnn.continueSequence(
+      noteSeq,
+      8,
+      1.1
+    )
+    console.log('the result sequence is: ', resultSeq)
+  } catch (error){
+    console.log(error)
+  }
+}
+
+</script>
