@@ -62,7 +62,7 @@ function drum_to_note_sequence(quantize_tensor) {
     const player_length = 32;
     const temperature_drum = 1;
 
-    predicted_sequence = await drums_rnn
+    predicted_sequence = drums_rnn
 		.continueSequence(cur_seq, player_length, temperature_drum)
 		.then(r => seed_pattern.concat(note_to_drum_sequence(r, player_length)));
 
