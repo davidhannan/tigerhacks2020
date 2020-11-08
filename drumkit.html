@@ -11,7 +11,8 @@
 			height: 100%;
 			margin: 0px;
 			padding: 0px;
-
+			font-family: 'Open Sans', sans-serif;
+			
 		}
 
 		.drum-container {
@@ -158,6 +159,8 @@
 			height: 25px;
 			margin: auto;
 			position: relative;
+			font-weight:600;
+			font-style: oblique;
 		}
 
 		.drum-row-title {
@@ -181,6 +184,7 @@
 			margin-top: 5px;
 			margin-bottom: 5px;
 			width: 150px;
+			font-family: 'Open Sans', sans-serif;
 		}
 
 		.drum-inputs {
@@ -290,6 +294,24 @@
 			background: #f0d0a5;
 			cursor: pointer;
 		}
+		  }
+		  .instructions:before{
+			content: ""; 
+    	display: block;
+		  }
+		  p{
+			font-family: 'Open Sans', sans-serif;
+		  }
+		  h3{
+			font-family: 'Open Sans', sans-serif;
+			font-style: oblique;
+		  }
+		.instructions{
+			text-align: center;
+		align-content: center;
+		position: absolute;
+		bottom: 10px;
+		}	
 
 	</style>
 </head>
@@ -303,7 +325,7 @@
 	<script type="text/javascript" src="js/tone.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-	
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
 
 	<div class="drum-container">
 		<div class="drum-row">
@@ -541,11 +563,15 @@
 		<!-- <button id="load"> Load </button> -->
 		<button id="play"> Play </button>
 		<button id="stop"> Stop </button>
-		<button id="generate"> Generate Beat </button>
+		<button id="generate"> Generate New Beat </button>
 	</div>
-	
-
-
+	<div class="instructions">
+		<h3>Instructions:</h3>
+		<p id="desc">
+			Create a pattern with the sesame seed buttons, press play to listen to the pattern you have created.
+			Once you are satisifed, press generate beat to create a new ai beat
+		</p>
+	</div>
 
 	<script>
 
