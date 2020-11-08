@@ -19,6 +19,7 @@ let first = true;
 //--------------
 var kitType = "analog";
 var dial_tempo = 100;
+var sliderTempo = 8;
 var boolPlayMode = 0;
 var playedOnce = 0;
 //player_length is the amount of notes to generate AFTER the seed. so play_length=40 is in total length 48
@@ -165,12 +166,15 @@ document.querySelector("#stop").addEventListener("click", function () {
 });
 
 document.querySelector("#generate").addEventListener("click", function () {
-    let cur_seq = drum_to_note_sequence(seed_pattern);
-    sequenceInit();
+    runDrum();
 
     runArp();
-
 });
+
+function runDrum(){
+    let cur_seq = drum_to_note_sequence(seed_pattern);
+    sequenceInit();
+}
 
 function runArp() {
     let s_seq = [
@@ -207,6 +211,8 @@ function addDrumUI() {
                 button.classList.add("deepdrum-on");
                 seed_pattern[index].push(sound);
             }
+
+            runDrum();
         });
     }
 
@@ -239,7 +245,7 @@ function scheduleTimeOn() {
     tempo = dial_tempo;
     Tone.Transport.bpm.value = tempo;
 
-    Tone.Transport.scheduleRepeat(playPattern, "8n");
+    Tone.Transport.scheduleRepeat(playPattern, sliderTempo+"n");
 
     Tone.Transport.start();
     playing = true;
@@ -249,6 +255,8 @@ function scheduleTimeOn() {
 // master scheduler time OFF
 //------------------------------
 function scheduleTimeOff() {
+    $("#stop").hide();
+    $("#play").show();
     Tone.Transport.stop();
     count = 0;
     chordIdx = 0;
@@ -276,7 +284,7 @@ function playPattern(time) {
     let note = cur_sequence[count - start];
 
     if (note != "" && note != null) {
-        lead_synth.triggerAttackRelease(note, "8n", time + TIME_FUTURE);
+        lead_synth.triggerAttackRelease(note, sliderTempo+"n", time + TIME_FUTURE);
     }
 
     //reset count when reaching end of array
@@ -431,3 +439,17 @@ function construct_arpeggio(seq, pLength) {
     res.filter(n => n);
     return res;
 }
+
+//---------------------------
+// Init slider listeners
+//---------------------------
+document.querySelector("#tempo").addEventListener("change", function(){
+    scheduleTimeOff();
+    sliderTempo = document.querySelector("#tempo").value;
+});
+
+document.querySelector("#temperature").addEventListener("change", function(){
+    scheduleTimeOff();
+    temperature_drum = document.querySelector("#temperature").value;
+    temperature_arp = document.querySelector("#temperature").value;
+});
