@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="background.css">
 	<title>Burger Drums</title>
 
 	<style>
@@ -27,6 +28,7 @@
 			flex-direction: column;
 			justify-content: space-between;
 			margin: auto;
+			z-index: 999;
 		}
 
 		
@@ -221,7 +223,7 @@
 		margin-left: 10px;
 		width: 45%;
 		height: 15px;
-		background-image: linear-gradient(to right, goldenrod , red);
+		background-image: linear-gradient(to right, goldenrod , lightgoldenrodyellow);
 		outline: none;
 		opacity: 0.5;
 		border-radius: 40px; 
@@ -242,6 +244,7 @@
 		border-radius: 50%; 
 		background: #f0d0a5;
 		cursor: pointer;
+		border: 1px solid black;
 		}
 
 		.temperature-slider::-moz-range-thumb {
@@ -252,6 +255,7 @@
 			border-radius: 50%; 
 			background: #f0d0a5;
 			cursor: pointer;
+			border: 1px solid black;
 		}
 		.tempo-slider {
 		float: right;
@@ -262,7 +266,7 @@
 		margin-right: 10px;
 		width: 45%;
 		height: 15px;
-		background-image: linear-gradient(to right, goldenrod , red);
+		background-image: linear-gradient(to right, goldenrod , lightgoldenrodyellow);
 		outline: none;
 		opacity: 0.5;
 		border-radius: 40px; 
@@ -283,6 +287,7 @@
 		border-radius: 50%; 
 		background: #f0d0a5;
 		cursor: pointer;
+		border: 1px solid black;
 		}
 
 		.tempo-slider::-moz-range-thumb {
@@ -293,8 +298,9 @@
 			border-radius: 50%; 
 			background: #f0d0a5;
 			cursor: pointer;
+			border: 1px solid black;
 		}
-		  }
+		  
 		  .instructions:before{
 			content: ""; 
     	display: block;
@@ -314,21 +320,26 @@
 		position: absolute;
 		bottom: 10px;
 		}	
+		
 
 	</style>
 </head>
 
 <body>
 
-	<script type="text/javascript"
-		src="https://cdn.jsdelivr.net/npm/@magenta/music@1.4.2/dist/magentamusic.min.js"></script>
+	<div id="clouds">
+		
+		<div class="cloud x1"><img src="favicon.ico" alt=""> </div>
+		<!-- Time for multiple clouds to dance around -->
+		<div class="cloud x2"><img src="favicon.ico" alt=""> </div>
+		<div class="cloud x3"><img src="favicon.ico" alt=""></div>
+		<div class="cloud x4"><img src="favicon.ico" alt=""></div>
+		<div class="cloud x5"><img src="favicon.ico" alt=""></div>
 
-	<script type="text/javascript" src="js/reverse_midi_map.js"></script>
-	<script type="text/javascript" src="js/tone.js"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
-
+		
+	</div>
+	
 	<div class="drum-container">
 		<div class="drum-row">
 			<div class="drum-row-title" id="label_0">
@@ -575,6 +586,17 @@
 			create new beats.
 		</p>
 	</div>
+
+	<script type="text/javascript"
+		src="https://cdn.jsdelivr.net/npm/@magenta/music@1.4.2/dist/magentamusic.min.js"></script>
+
+	<script type="text/javascript" src="js/reverse_midi_map.js"></script>
+	<script type="text/javascript" src="js/tone.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+	
 
 	<script>
 
