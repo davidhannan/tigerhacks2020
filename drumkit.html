@@ -578,6 +578,14 @@
 			<div class="pickle-right"></div>
 		</div>
 
+<<<<<<< HEAD
+		<div class="buttons">
+			<!-- <button id="load"> Load </button> -->
+			<button id="play"> Play </button>
+			<button id="stop"> Stop </button>
+			<button id="generate"> Generate New Beat </button>
+		</div>
+=======
 		<div class="cheese">
 			<span class="cheese-corner-right">▾</span>
 		</div>
@@ -589,25 +597,7 @@
 		<div class="bottom-bun">
 			<input type="range" min="1" max="100" value="50" class="temperature-slider" id="temperature">
 			<input type="range" min="1" max="100" value="50" class="tempo-slider" id="tempo">
-			<div class="select">
-				<div class="kitSelect">
-					<label for="kit">Drum Kit</label>
-					<select name="kit" id="kit">
-						<option value="hiphop">hiphop</option>
-						<option value="electronic">electronic</option>
-						<option value="analog">analog</option>
-						<option value="percussion">percussion</option>
-					</select>
-				</div>
-				<div class="synthSelect">
-					<label for="synths">Synth</label>
-					<select name="synths" id="synths">
-						<option value="normal">normal</option>
-						<option value="fm">fm</option>
-						<option value="am">am</option>
-					</select>
-				</div>
-			</div>
+
 		</div>
 
 		<div class="buttons">
@@ -616,6 +606,7 @@
 			<button id="stop"> Stop </button>
 			<button id="generate"> Generate New Beat </button>
 		</div>
+>>>>>>> caf27a740187f8e7ff75dfaf560540a890532dd1
 	</div>
 	<div class="instructions">
 		<h3>Instructions:</h3>
@@ -691,6 +682,46 @@
 
 		lead_gain.toMaster();
 
+		function toPiano() {
+			lead_synth = new Tone.Sampler({
+				'A0': 'A0.[mp3|ogg]',
+				'C1': 'C1.[mp3|ogg]',
+				'D#1': 'Ds1.[mp3|ogg]',
+				'F#1': 'Fs1.[mp3|ogg]',
+				'A1': 'A1.[mp3|ogg]',
+				'C2': 'C2.[mp3|ogg]',
+				'D#2': 'Ds2.[mp3|ogg]',
+				'F#2': 'Fs2.[mp3|ogg]',
+				'A2': 'A2.[mp3|ogg]',
+				'C3': 'C3.[mp3|ogg]',
+				'D#3': 'Ds3.[mp3|ogg]',
+				'F#3': 'Fs3.[mp3|ogg]',
+				'A3': 'A3.[mp3|ogg]',
+				'C4': 'C4.[mp3|ogg]',
+				'D#4': 'Ds4.[mp3|ogg]',
+				'F#4': 'Fs4.[mp3|ogg]',
+				'A4': 'A4.[mp3|ogg]',
+				'C5': 'C5.[mp3|ogg]',
+				'D#5': 'Ds5.[mp3|ogg]',
+				'F#5': 'Fs5.[mp3|ogg]',
+				'A5': 'A5.[mp3|ogg]',
+				'C6': 'C6.[mp3|ogg]',
+				'D#6': 'Ds6.[mp3|ogg]',
+				'F#6': 'Fs6.[mp3|ogg]',
+				'A6': 'A6.[mp3|ogg]',
+				'C7': 'C7.[mp3|ogg]',
+				'D#7': 'Ds7.[mp3|ogg]',
+				'F#7': 'Fs7.[mp3|ogg]',
+				'A7': 'A7.[mp3|ogg]',
+				'C8': 'C8.[mp3|ogg]'
+			}, {
+				'baseUrl': 'sounds/salamander/'
+			}).toMaster();
+			
+		lead_synth.release = 3;
+		lead_synth.volume.value = 3;
+		}
+
 		var cur_note = "";
 
 		//--------------
@@ -763,6 +794,9 @@
 
 
 		function playInstrument(row_value, time) {
+			if (!time) {
+				time = 0;
+			}
 			if (row_value == 0) {
 				drum_kick.start(time + TIME_FUTURE);
 			} else if (row_value == 1) {
@@ -907,8 +941,9 @@
 			}
 
 			let note = cur_sequence[count - start];
-			if (note != "") {
-				lead_synth.triggerAttackRelease(note, "16n", time + TIME_FUTURE);
+
+			if (note != "" && note != null) {
+				lead_synth.triggerAttackRelease(note, "8n", time + TIME_FUTURE);
 			}
 
 			//reset count when reaching end of array
@@ -978,8 +1013,13 @@
 		}
 
 		//sequenceInit is called from runtime though it shouldnt be later on
-		sequenceInit();
-		runArp();
+
+		page.addEventListener("load", function(){
+
+			sequenceInit();
+			runArp();
+			console.log("initialize")
+		});
 		let sequence;
 
 		async function sequenceInit() {
