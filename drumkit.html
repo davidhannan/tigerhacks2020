@@ -145,7 +145,15 @@
   		.buttons{
     	text-align: center;
     	align-content: center;
-  	}
+		  }
+		  .instructions:before{
+			content: ""; 
+    	display: block;
+		  }
+		.instructions{
+			text-align: center;
+    	align-content: center;
+		}	
 
 	</style>
 </head>
@@ -386,11 +394,15 @@
 		<!-- <button id="load"> Load </button> -->
 		<button id="play"> Play </button>
 		<button id="stop"> Stop </button>
-		<button id="generate"> Generate Beat </button>
+		<button id="generate"> Generate New Beat </button>
 	</div>
-	
-
-
+	<div class="instructions">
+		<h3>Instructions:</h3>
+		<p id="desc">
+			Create a pattern with the sesame seed buttons, press play to listen to the pattern you have created.
+			Once you are satisifed, press generate beat to create a new ai beat
+		</p>
+	</div>
 
 	<script>
 
