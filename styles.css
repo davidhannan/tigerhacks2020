@@ -55,3 +55,12 @@
     470px -540px #ffffff,
     560px -540px #ffffff;
   }
+
+  .buttons:before{
+    content: ""; 
+    display: block;
+  }
+  .buttons{
+    text-align: center;
+    align-content: center;
+  }
