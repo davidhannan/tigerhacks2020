@@ -278,7 +278,6 @@ p {
     font-family: 'Open Sans', sans-serif;
     width: 70%;
     margin: auto;
-    ;
 }
 
 h3 {
@@ -345,4 +344,26 @@ select{
     border-color: #fff transparent transparent transparent;
     border-radius: 5px;
     background-color: green;
+}
+
+select:after, select:focus{
+  outline: none;
+}
+
+#drum-title{
+    position: absolute;
+    left: -105px;
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+    font-style: oblique;
+}
+
+#synth-title{
+    position: absolute;
+    right: -105px;
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+    font-style: oblique;
 }

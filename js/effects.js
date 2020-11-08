@@ -11,9 +11,21 @@ var instrument_player = [
     "sounds/drum-kits/" + kitType + "/clap.mp3",
     "sounds/drum-kits/" + kitType + "/ride.mp3"
 ];
+
+function refreshInstrumentPlayer(){
+    instrument_player = [
+        "sounds/drum-kits/" + kitType + "/kick.mp3",
+        "sounds/drum-kits/" + kitType + "/snare.mp3",
+        "sounds/drum-kits/" + kitType + "/hihat-closed.mp3",
+        "sounds/drum-kits/" + kitType + "/hihat-open.mp3",
+        "sounds/drum-kits/" + kitType + "/tom-low.mp3",
+        "sounds/drum-kits/" + kitType + "/tom-mid.mp3",
+        "sounds/drum-kits/" + kitType + "/tom-high.mp3",
+        "sounds/drum-kits/" + kitType + "/clap.mp3",
+        "sounds/drum-kits/" + kitType + "/ride.mp3"
+    ];
+}
 var drum_kick, drum_snare, drum_hihat_closed, drum_hihat_open, drum_tom_low, drum_tom_mid, drum_tom_high, drum_clap, drum_ride;
-
-
 
 function loadPlayers() {
     drum_kick = new Tone.Player(instrument_player[0]);
