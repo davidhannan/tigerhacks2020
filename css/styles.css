@@ -429,3 +429,7 @@ input:focus {
     position: absolute;
     left: -100px;
 }
+
+#effects{
+    width: 180px;
+}

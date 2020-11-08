@@ -471,3 +471,13 @@ document.querySelector("#synthType").addEventListener("change", function () {
     scheduleTimeOff();
     changeLead(document.querySelector("#synthType").value);
 });
+
+document.querySelector("#effects").addEventListener("click", function() {
+    effects = !effects;
+    if(effects){
+        document.querySelector("#effects").innerHTML = "Turn Effects OFF";
+    }else{
+        document.querySelector("#effects").innerHTML = "Turn Effects ON (Careful)";
+    }
+    console.log("Effects are " + effects);
+});

@@ -1,4 +1,5 @@
 var kitType = "analog";
+var effects = false;
 
 var instrument_player = [
     "sounds/drum-kits/" + kitType + "/kick.mp3",
@@ -66,8 +67,11 @@ function loadDrumConnections() {
     var drumDistortion = new Tone.Distortion(drumDistortionAmt);
     var drumReverb = new Tone.JCReverb(drumReverbAmt);
 
-    drumChannel.chain(drumReverb,drumDistortion,compressor, Tone.Destination);
-
+    if(effects){
+        drumChannel.chain(drumReverb,drumDistortion,compressor, Tone.Destination);
+    }else{
+        drumChannel.toMaster();
+    }
     
 }
 
@@ -108,7 +112,11 @@ function loadLeadConnections() {
     var filter = new Tone.Filter(leadFilterFreq, filterType);
     var reverb = new Tone.JCReverb(leadReverbAmt)
 
-    lead_synth.chain(pitchShift,chorus,filter, reverb,Tone.Destination); 
+    if(effects){
+        lead_synth.chain(pitchShift,chorus,filter, reverb,Tone.Destination); 
+    }else{
+        lead_synth.toMaster();
+    }
 }
 
 document.querySelector("#synthChorusFreqKnob").addEventListener("mod", function(){
