@@ -12,6 +12,7 @@ var count = start;
 var playing = false;
 let cur_sequence;
 const GAIN_LEAD = 0.6;
+let first = true;
 
 //--------------
 //temp variables that can be made into dials and other selectors
@@ -202,7 +203,11 @@ function playInstrument(row_value, time) {
 document.querySelector("#play").addEventListener("click", function () {
     $("#play").hide();
     $("#stop").show();
-    loadTone();
+    if(first){
+        first=false;
+        loadTone();
+        runArp();
+    }
     scheduleTimeOn();
 });
 
