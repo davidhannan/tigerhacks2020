@@ -674,6 +674,9 @@ const GAIN_LEAD = 0.6;
 
 
 		function playInstrument(row_value, time) {
+			if(!time){
+				time =0;
+			}
 			if (row_value == 0) {
 				drum_kick.start(time + TIME_FUTURE);
 			} else if (row_value == 1) {
