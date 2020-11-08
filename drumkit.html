@@ -80,16 +80,76 @@
 		}
 
 		.tomato{
+			margin-top: 10px;
 			width: 500px;
-			height: 30px;
+			height: 25px;
+			float:left;
 			background-color: #ff2c06;
 			margin: auto;
+			margin-top:;
 			border-radius: 60px;
 			font-size: 200px;
 			color: #fddb28;
 			padding-top: -20px;
 			text-align: right;
 			position: relative;
+		}
+		.pickle-container{
+			margin: auto;
+			width: 775px;
+			height: 25px;
+		}
+		.pickle-left{
+			width: 137px;
+			float: left;
+			height: 25px;
+			background-color: green;
+			font-size: 200px;
+			color: #fddb28;
+			padding-top: -20px;
+			text-align: right;
+			position: relative;
+			z-index: 2;
+			/* margin-top: 10px; */
+			border-radius: 10px;
+			border-top-left-radius:30%;
+			border-top-right-radius:30%;
+			
+		}
+		.pickle-right{
+			float: right;
+			width: 137px;
+			height: 25px;
+			background-color: green;
+			border-radius: 80px;
+			font-size: 200px;
+			/* margin-top: 10px; */
+			color: #fddb28;
+			padding-top: -20px;
+			text-align: right;
+			position: relative;
+			z-index: 2;
+			border-radius: 10px;
+			border-top-left-radius:30%;
+			border-top-right-radius:30%;
+		}
+		.pickle-middle{
+			float: left;
+			width: 137px;
+			height: 25px;
+			background-color: green;
+			border-radius: 80px;
+			font-size: 200px;
+			margin-top: 4px;
+			margin-left: 100px;
+			color: #fddb28;
+			padding-top: -20px;
+			text-align: right;
+			position: relative;
+			z-index: 2;
+			border-radius: 10px;
+			border-top-left-radius:30%;
+			border-top-right-radius:30%;
 		}
 
 		.drum-row {
@@ -371,7 +431,14 @@
 		</div>
 
 	</div>
-	<div class="tomato"></div>
+	<div class="pickle-container">
+		<div class="pickle-left"></div>
+		<div class="tomato">
+			<div class="pickle-middle"></div>
+		</div>
+		<div class="pickle-right"></div>
+	</div>
+	
 	<div class="cheese"> 
 		<span class="cheese-corner-right">▾</span>
 	</div>
