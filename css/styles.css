@@ -29,6 +29,7 @@ body {
     border-radius: 0px 0px 200px 200px;
     margin: auto;
     padding-top: 10px;
+    position: relative;
 }
 
 .patty {
@@ -412,4 +413,17 @@ select:after, select:focus{
     border-color: #fff ;
     border-radius: 5px;
     background-color: goldenrod;
+}
+
+input:focus {
+    outline:none;
+}
+
+#lead-effect{
+    position: absolute;
+    right: -90px;
+}
+#drum-effect{
+    position: absolute;
+    left: -100px;
 }
