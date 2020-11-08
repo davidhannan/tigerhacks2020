@@ -36,6 +36,7 @@
 			background-color: goldenrod;
 			border-radius: 0px 0px 200px 200px;
 			margin: auto;
+			padding-top: 20px;
 		}
 
 		.patty {
@@ -209,6 +210,90 @@
   		.buttons{
     	text-align: center;
     	align-content: center;
+	  }
+	  
+	  .temperature-slider {
+		  float: left;
+		-webkit-appearance: none;
+		display: block;
+		margin: 0 auto;
+		margin-bottom: 10px;
+		margin-left: 10px;
+		width: 45%;
+		height: 15px;
+		background-image: linear-gradient(to right, goldenrod , red);
+		outline: none;
+		opacity: 0.5;
+		border-radius: 40px; 
+		-webkit-transition: 1s;
+		transition: opacity .4s;
+		border: 1px solid lightgray;
+		}
+
+		.temperature-slider:hover {
+			opacity: .7;
+		}
+
+		.temperature-slider::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 25px;
+		height: 25px;
+		border-radius: 50%; 
+		background: #f0d0a5;
+		cursor: pointer;
+		}
+
+		.temperature-slider::-moz-range-thumb {
+			-webkit-appearance: none;
+			appearance: none;
+			width: 25px;
+			height: 25px;
+			border-radius: 50%; 
+			background: #f0d0a5;
+			cursor: pointer;
+		}
+		.tempo-slider {
+		float: right;
+		-webkit-appearance: none;
+		display: block;
+		margin: 0 auto;
+		margin-bottom: 10px;
+		margin-right: 10px;
+		width: 45%;
+		height: 15px;
+		background-image: linear-gradient(to right, goldenrod , red);
+		outline: none;
+		opacity: 0.5;
+		border-radius: 40px; 
+		-webkit-transition: 1s;
+		transition: opacity .4s;
+		border: 1px solid lightgray;
+		}
+
+		.tempo-slider:hover {
+			opacity: .7;
+		}
+
+		.tempo-slider::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 25px;
+		height: 25px;
+		border-radius: 50%; 
+		background: #f0d0a5;
+		cursor: pointer;
+		}
+
+		.tempo-slider::-moz-range-thumb {
+			-webkit-appearance: none;
+			appearance: none;
+			width: 25px;
+			height: 25px;
+			border-radius: 50%; 
+			background: #f0d0a5;
+			cursor: pointer;
+		}
 		  }
 		  .instructions:before{
 			content: ""; 
@@ -468,7 +553,11 @@
 
 	<div class="lettuce"></div>
 
-	<div class="bottom-bun"></div>
+	<div class="bottom-bun">
+		<input type="range" min="1" max="100" value="50" class="temperature-slider" id="temperature">
+		<input type="range" min="1" max="100" value="50" class="tempo-slider" id="tempo">
+
+	</div>
 
 	<div class="buttons">
 		<!-- <button id="load"> Load </button> -->
