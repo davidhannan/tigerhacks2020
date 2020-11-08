@@ -119,6 +119,7 @@
 		button {
 			margin-top: 5px;
 			margin-bottom: 5px;
+			width: 150px;
 		}
 
 		.drum-inputs {
@@ -137,6 +138,15 @@
 			outline: none;
 		}
 
+		.buttons:before{
+    	content: ""; 
+    	display: block;
+  		}
+  		.buttons{
+    	text-align: center;
+    	align-content: center;
+  	}
+
 	</style>
 </head>
 
@@ -149,9 +159,7 @@
 	<script type="text/javascript" src="js/tone.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-	<button id="load"> Load </button>
-	<button id="play"> Play </button>
-	<button id="stop" display="none"> Stop </button>
+	
 
 	<div class="drum-container">
 		<div class="drum-row">
@@ -373,8 +381,14 @@
 	<div class="lettuce"></div>
 
 	<div class="bottom-bun"></div>
+
+	<div class="buttons">
+		<!-- <button id="load"> Load </button> -->
+		<button id="play"> Play </button>
+		<button id="stop"> Stop </button>
+		<button id="generate"> Generate Beat </button>
+	</div>
 	
-	<button id="generate"> Generate Beat </button>
 
 
 
@@ -418,8 +432,8 @@
 		//--------------
 		//temporary call to hide buttons until load is clicked
 		//--------------
-		$("#play").hide();
-		$("#stop").hide();
+		// $("#play").hide();
+		 $("#stop").hide();
 
 		var instrument_player = [
 			"sounds/drum-kits/" + kitType + "/kick.mp3",
@@ -476,15 +490,16 @@
 			}
 		}
 
-		document.querySelector("#load").addEventListener("click", function () {
-			$("#play").show();
-			$("#load").hide();
-			loadTone();
-		});
+		// document.querySelector("#load").addEventListener("click", function () {
+		// 	$("#play").show();
+		// 	$("#load").hide();
+		// 	
+		// });
 
 		document.querySelector("#play").addEventListener("click", function () {
 			$("#play").hide();
 			$("#stop").show();
+			loadTone();
 			scheduleTimeOn();
 		});
 
