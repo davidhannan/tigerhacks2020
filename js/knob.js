@@ -17,6 +17,10 @@ $(document).ready(function(){
         rtl: rtl,
         change: function(value) {
             //console.log("change : " + value);
+            console.log(value);
+            console.log(this.$[0]);
+            var evt = new CustomEvent('change');
+            this.$[0].dispatchEvent(evt);
         },
         release: function(value) {
             //console.log(this.$.attr('value'));
@@ -138,7 +142,7 @@ $(document).ready(function(){
                     rotation: this.$.data("rotation"),
                     rtl: !1,
                     draw: null,
-                    change: null,
+                    change: test(),
                     cancel: null,
                     release: null,
                     format: function(t) {
@@ -523,3 +527,7 @@ $(document).ready(function(){
         }).parent()
     }
 });
+
+function test() {
+    console.log("FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU");
+}

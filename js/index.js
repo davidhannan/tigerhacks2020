@@ -26,7 +26,7 @@ var playedOnce = 0;
 const player_length = 16;
 const arp_pattern_length = 16;
 //I think turning this up will make the generated beat have more notes
-const temperature_drum = 1.5;
+var temperature_drum = 1.5;
 //Seed for pattern
 var seed_pattern = [
     [0, 2],
@@ -436,6 +436,9 @@ document.querySelector("#tempo").addEventListener("change", function(){
 
 document.querySelector("#temperature").addEventListener("change", function(){
     scheduleTimeOff();
-    temperature_drum = document.querySelector("#temperature").value;
-    temperature_arp = document.querySelector("#temperature").value;
+    temperature_drum = document.querySelector("#temperature").value/10;
+    temperature_arp = document.querySelector("#temperature").value/10;
+    console.log(temperature_arp);
+    runDrum();
+    runArp();
 });
