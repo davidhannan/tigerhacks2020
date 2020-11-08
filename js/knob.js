@@ -356,7 +356,7 @@ $(document).ready(function(){
         this.PI2 = 2 * Math.PI,
         this.extend = function() {
             this.o = t.extend({
-                bgColor: this.$.data("bgcolor") || "#EEEEEE",
+                bgColor: this.$.data("bgcolor") || "#e3c476",
                 angleOffset: this.$.data("angleoffset") || 0,
                 angleArc: this.$.data("anglearc") || 360,
                 inline: !0

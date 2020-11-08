@@ -42,10 +42,27 @@ var arp_seq_limit = 50;
 var temperature_arp = 1.0;
 
 const lead_gain = new Tone.Gain(GAIN_LEAD);
-var lead_synth = new Tone.Synth()
-loadLeadConnections();
+var lead_synth;
 
+changeLead("synth");
 
+function changeLead(type) {
+    switch (type) {
+        case "synth":
+            lead_synth = new Tone.Synth();
+            break;
+        case "FMSynth":
+            lead_synth = new Tone.FMSynth();
+            break;
+        case "AMSynth":
+            lead_synth = new Tone.AMSynth();
+            break;
+        case "Piano":
+            toPiano()
+            break;
+    }
+    loadLeadConnections();
+}
 
 loadPlayers();
 
@@ -137,8 +154,8 @@ function playInstrument(row_value, time) {
 document.querySelector("#play").addEventListener("click", function () {
     $("#play").hide();
     $("#stop").show();
-    if(first){
-        first=false;
+    if (first) {
+        first = false;
         loadTone();
         runArp();
     }
@@ -157,7 +174,7 @@ document.querySelector("#generate").addEventListener("click", function () {
     runArp();
 });
 
-function runDrum(){
+function runDrum() {
     let cur_seq = drum_to_note_sequence(seed_pattern);
     sequenceInit();
 }
@@ -231,7 +248,7 @@ function scheduleTimeOn() {
     tempo = dial_tempo;
     Tone.Transport.bpm.value = tempo;
 
-    Tone.Transport.scheduleRepeat(playPattern, sliderTempo+"n");
+    Tone.Transport.scheduleRepeat(playPattern, sliderTempo + "n");
 
     Tone.Transport.start();
     playing = true;
@@ -270,7 +287,7 @@ function playPattern(time) {
     let note = cur_sequence[count - start];
 
     if (note != "" && note != null) {
-        lead_synth.triggerAttackRelease(note, sliderTempo+"n", time + TIME_FUTURE);
+        lead_synth.triggerAttackRelease(note, sliderTempo + "n", time + TIME_FUTURE);
     }
 
     //reset count when reaching end of array
@@ -429,16 +446,28 @@ function construct_arpeggio(seq, pLength) {
 //---------------------------
 // Init slider listeners
 //---------------------------
-document.querySelector("#tempo").addEventListener("change", function(){
+document.querySelector("#tempo").addEventListener("change", function () {
     scheduleTimeOff();
     sliderTempo = document.querySelector("#tempo").value;
 });
 
-document.querySelector("#temperature").addEventListener("change", function(){
+document.querySelector("#temperature").addEventListener("change", function () {
     scheduleTimeOff();
-    temperature_drum = document.querySelector("#temperature").value/10;
-    temperature_arp = document.querySelector("#temperature").value/10;
-    console.log(temperature_arp);
+    temperature_drum = document.querySelector("#temperature").value / 10;
+    temperature_arp = document.querySelector("#temperature").value / 10;
     runDrum();
     runArp();
+});
+
+document.querySelector("#drumType").addEventListener("change", function () {
+    scheduleTimeOff();
+    kitType = document.querySelector("#drumType").value;
+    refreshInstrumentPlayer();
+    loadPlayers();
+    loadDrumConnections();
+});
+
+document.querySelector("#synthType").addEventListener("change", function () {
+    scheduleTimeOff();
+    changeLead(document.querySelector("#synthType").value);
 });
