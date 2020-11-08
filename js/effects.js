@@ -45,15 +45,27 @@ function loadDrumConnections() {
 
     var drumDistortionAmt = 0.03;
 
-    var drumReverbAmt = 0.04;
+    var drumReverbAmt = 0.0;
 
     var compressor = new Tone.Compressor(drumCompThresh, drumCompRatio).toDestination();
     var drumDistortion = new Tone.Distortion(drumDistortionAmt);
     var drumReverb = new Tone.JCReverb(drumReverbAmt);
 
-    drumChannel.connect(drumReverb);
-    drumReverb.connect(drumDistortion);
-    drumDistortion.connect(compressor);
+    drumChannel.chain(drumReverb,drumDistortion,compressor, Tone.Destination);
 
-    compressor.toMaster()
+}
+
+function loadLeadConnections() {
+
+    var leadPitchShiftAmt = 0;
+    var leadChorusFreq = 0;
+    var leadChorusDelay = 0;
+    var leadChorusDepth = 0;
+    var leadFilterFreq = 30000;
+
+    var pitchShift = new Tone.PitchShift(leadPitchShiftAmt);
+    var chorus = new Tone.Chorus(leadChorusFreq, leadChorusDelay, leadChorusDepth);
+    var filter = new Tone.Filter(leadFilterFreq, "lowpass");
+
+    lead_synth.chain(pitchShift,chorus,filter,Tone.Destination); 
 }

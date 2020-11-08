@@ -16,7 +16,7 @@ const GAIN_LEAD = 0.6;
 //--------------
 //temp variables that can be made into dials and other selectors
 //--------------
-var kitType = "analog";
+
 var dial_tempo = 100;
 var boolPlayMode = 0;
 var playedOnce = 0;
@@ -43,21 +43,7 @@ const lead_gain = new Tone.Gain(GAIN_LEAD);
 var lead_synth = new Tone.Synth()
 loadLeadConnections();
 
-function loadLeadConnections() {
 
-    var cheb = new Tone.Chebyshev(40);
-
-    lead_synth.connect(cheb);
-
-    var pitchShift = new Tone.PitchShift(-4);
-    var chorus = new Tone.Chorus(10, 5, 0.5);
-    var filter = new Tone.Filter(2000, "lowpass");
-
-    cheb.connect(pitchShift);
-    pitchShift.connect(chorus);
-    chorus.connect(filter);
-    filter.toMaster();
-}
 
 loadPlayers();
 
