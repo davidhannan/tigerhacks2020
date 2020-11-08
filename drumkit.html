@@ -211,31 +211,32 @@
 		}
 
 
-		.buttons:before{
-    	content: ""; 
-    	display: block;
-  		}
-  		.buttons{
-    	text-align: center;
-    	align-content: center;
-	  }
-	  
-	  .temperature-slider {
-		  float: left;
-		-webkit-appearance: none;
-		display: block;
-		margin: 0 auto;
-		margin-bottom: 10px;
-		margin-left: 10px;
-		width: 45%;
-		height: 15px;
-		background-image: linear-gradient(to right, goldenrod , lightgoldenrodyellow);
-		outline: none;
-		opacity: 0.5;
-		border-radius: 40px; 
-		-webkit-transition: 1s;
-		transition: opacity .4s;
-		border: 1px solid lightgray;
+		.buttons:before {
+			content: "";
+			display: block;
+		}
+
+		.buttons {
+			text-align: center;
+			align-content: center;
+		}
+
+		.temperature-slider {
+			float: left;
+			-webkit-appearance: none;
+			display: block;
+			margin: 0 auto;
+			margin-bottom: 10px;
+			margin-left: 10px;
+			width: 45%;
+			height: 15px;
+			background-image: linear-gradient(to right, goldenrod, lightgoldenrodyellow);
+			outline: none;
+			opacity: 0.5;
+			border-radius: 40px;
+			-webkit-transition: 1s;
+			transition: opacity .4s;
+			border: 1px solid lightgray;
 
 		}
 
@@ -244,14 +245,14 @@
 		}
 
 		.temperature-slider::-webkit-slider-thumb {
-		-webkit-appearance: none;
-		appearance: none;
-		width: 25px;
-		height: 25px;
-		border-radius: 50%; 
-		background: #f0d0a5;
-		cursor: pointer;
-		border: 1px solid black;
+			-webkit-appearance: none;
+			appearance: none;
+			width: 25px;
+			height: 25px;
+			border-radius: 50%;
+			background: #f0d0a5;
+			cursor: pointer;
+			border: 1px solid black;
 
 		}
 
@@ -267,21 +268,21 @@
 		}
 
 		.tempo-slider {
-		float: right;
-		-webkit-appearance: none;
-		display: block;
-		margin: 0 auto;
-		margin-bottom: 10px;
-		margin-right: 10px;
-		width: 45%;
-		height: 15px;
-		background-image: linear-gradient(to right, goldenrod , lightgoldenrodyellow);
-		outline: none;
-		opacity: 0.5;
-		border-radius: 40px; 
-		-webkit-transition: 1s;
-		transition: opacity .4s;
-		border: 1px solid lightgray;
+			float: right;
+			-webkit-appearance: none;
+			display: block;
+			margin: 0 auto;
+			margin-bottom: 10px;
+			margin-right: 10px;
+			width: 45%;
+			height: 15px;
+			background-image: linear-gradient(to right, goldenrod, lightgoldenrodyellow);
+			outline: none;
+			opacity: 0.5;
+			border-radius: 40px;
+			-webkit-transition: 1s;
+			transition: opacity .4s;
+			border: 1px solid lightgray;
 
 		}
 
@@ -290,14 +291,14 @@
 		}
 
 		.tempo-slider::-webkit-slider-thumb {
-		-webkit-appearance: none;
-		appearance: none;
-		width: 25px;
-		height: 25px;
-		border-radius: 50%; 
-		background: #f0d0a5;
-		cursor: pointer;
-		border: 1px solid black;
+			-webkit-appearance: none;
+			appearance: none;
+			width: 25px;
+			height: 25px;
+			border-radius: 50%;
+			background: #f0d0a5;
+			cursor: pointer;
+			border: 1px solid black;
 		}
 
 		.tempo-slider::-moz-range-thumb {
@@ -618,7 +619,7 @@
 			create new beats.
 		</p>
 	</div>
-</div>
+	</div>
 
 	<script type="text/javascript"
 		src="https://cdn.jsdelivr.net/npm/@magenta/music@1.4.2/dist/magentamusic.min.js"></script>
@@ -627,9 +628,11 @@
 	<script type="text/javascript" src="js/tone.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+		rel="stylesheet">
 
-	
+
 
 	<script>
 
@@ -731,9 +734,9 @@
 			}, {
 				'baseUrl': 'sounds/salamander/'
 			}).toMaster();
-			
-		lead_synth.release = 3;
-		lead_synth.volume.value = 3;
+
+			lead_synth.release = 3;
+			lead_synth.volume.value = 3;
 		}
 
 		var cur_note = "";

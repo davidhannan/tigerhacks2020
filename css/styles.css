@@ -1,0 +1,338 @@
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    font-family: 'Open Sans', sans-serif;
+    justify-content: center;
+}
+
+.drum-container {
+    width: 800px;
+    height: 200px;
+    background-color: goldenrod;
+    border-radius: 200px 200px 0px 0px;
+    padding-top: 60px;
+    padding-bottom: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: auto;
+    z-index: 999;
+}
+
+.bottom-bun {
+    width: 800px;
+    height: 200px;
+    background-color: goldenrod;
+    border-radius: 0px 0px 200px 200px;
+    margin: auto;
+    padding-top: 20px;
+}
+
+.patty {
+    width: 900px;
+    height: 100px;
+    background-color: #681f24;
+    border-radius: 500px;
+    margin: -5px auto;
+}
+
+.cheese {
+    width: 775px;
+    height: 50px;
+    background-color: #fddb28;
+    margin: auto;
+    border-radius: 100px 100px 40px 40px;
+    font-size: 200px;
+    color: #fddb28;
+    padding-top: -20px;
+    text-align: right;
+    position: relative;
+}
+
+.cheese-corner-right {
+    height: 40px;
+    margin-top: 25px;
+    position: absolute;
+    top: -110px;
+    right: 10px;
+}
+
+.lettuce {
+    width: 850px;
+    height: 40px;
+    background-color: #82af15;
+    margin: auto;
+    border-radius: 40px 40px 0px 0px;
+    font-size: 200px;
+    color: #fddb28;
+    padding-top: -20px;
+    text-align: right;
+    position: relative;
+}
+
+.tomato {
+    margin-top: 10px;
+    width: 500px;
+    height: 25px;
+    float: left;
+    background-color: #ff2c06;
+    margin: auto;
+    border-radius: 60px;
+    font-size: 200px;
+    color: #fddb28;
+    padding-top: -20px;
+    text-align: right;
+    position: relative;
+}
+
+.pickle-container {
+    margin: auto;
+    width: 775px;
+    height: 25px;
+}
+
+.pickle-left {
+    width: 137px;
+    float: left;
+    height: 25px;
+    background-color: green;
+    font-size: 200px;
+    color: #fddb28;
+    padding-top: -20px;
+    text-align: right;
+    position: relative;
+    z-index: 2;
+    /* margin-top: 10px; */
+    border-radius: 10px;
+    border-top-left-radius: 30%;
+    border-top-right-radius: 30%;
+}
+
+.pickle-right {
+    float: right;
+    width: 137px;
+    height: 25px;
+    background-color: green;
+    border-radius: 80px;
+    font-size: 200px;
+    /* margin-top: 10px; */
+    color: #fddb28;
+    padding-top: -20px;
+    text-align: right;
+    position: relative;
+    z-index: 2;
+    border-radius: 10px;
+    border-top-left-radius: 30%;
+    border-top-right-radius: 30%;
+}
+
+.pickle-middle {
+    float: left;
+    width: 137px;
+    height: 25px;
+    background-color: green;
+    border-radius: 80px;
+    font-size: 200px;
+    margin-top: 4px;
+    margin-left: 100px;
+    color: #fddb28;
+    padding-top: -20px;
+    text-align: right;
+    position: relative;
+    z-index: 2;
+    border-radius: 10px;
+    border-top-left-radius: 30%;
+    border-top-right-radius: 30%;
+}
+
+.drum-row {
+    width: 80%;
+    height: 25px;
+    margin: auto;
+    position: relative;
+    font-weight: 600;
+    font-style: oblique;
+}
+
+.drum-row-title {
+    width: 150px;
+    margin: 0px;
+    padding-right: 30px;
+    position: absolute;
+    left: -170px;
+}
+
+.drum-row>div {
+    float: left;
+}
+
+.deepdrum-on {
+    background-color: rgb(247, 247, 230) !important;
+    border: 1px solid lightgray;
+}
+
+button {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 150px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.drum-inputs {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.deepdrum-step-buttons {
+    height: 16px;
+    width: 26px;
+    background-color: #f0d0a5;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    outline: none;
+}
+
+.buttons:before {
+    content: "";
+    display: block;
+}
+
+.buttons {
+    text-align: center;
+    align-content: center;
+}
+
+.temperature-slider {
+    float: left;
+    -webkit-appearance: none;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    width: 45%;
+    height: 15px;
+    background-image: linear-gradient(to right, goldenrod, lightgoldenrodyellow);
+    outline: none;
+    opacity: 0.5;
+    border-radius: 40px;
+    -webkit-transition: 1s;
+    transition: opacity .4s;
+    border: 1px solid lightgray;
+}
+
+.temperature-slider:hover {
+    opacity: .7;
+}
+
+.temperature-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #f0d0a5;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.temperature-slider::-moz-range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #f0d0a5;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.tempo-slider {
+    float: right;
+    -webkit-appearance: none;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    width: 45%;
+    height: 15px;
+    background-image: linear-gradient(to right, goldenrod, lightgoldenrodyellow);
+    outline: none;
+    opacity: 0.5;
+    border-radius: 40px;
+    -webkit-transition: 1s;
+    transition: opacity .4s;
+    border: 1px solid lightgray;
+}
+
+.tempo-slider:hover {
+    opacity: .7;
+}
+
+.tempo-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #f0d0a5;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.tempo-slider::-moz-range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #f0d0a5;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.instructions:before {
+    content: "";
+    display: block;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+    width: 70%;
+    margin: auto;
+    ;
+}
+
+h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-style: oblique;
+}
+
+.instructions {
+    text-align: center;
+    align-content: center;
+    position: absolute;
+    bottom: 10px;
+}
+
+.container {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+}
+
+.select {
+    padding-top: 50px;
+    padding-left: 450px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.synthSelect {
+    padding-top: 10px;
+}
