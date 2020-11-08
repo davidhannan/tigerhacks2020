@@ -119,7 +119,7 @@ $(document).ready(function(){
                 this.extend(),
                 this.o = t.extend({
                     min: void 0 !== this.$.data("min") ? this.$.data("min") : 0,
-                    max: void 0 !== this.$.data("max") ? this.$.data("max") : 100,
+                    max: void 0 !== this.$.data("max") ? this.$.data("max") : 10,
                     stopper: !0,
                     readOnly: this.$.data("readonly") || "readonly" === this.$.attr("readonly"),
                     cursor: this.$.data("cursor") === !0 && 30 || this.$.data("cursor") || 0,
@@ -129,7 +129,7 @@ $(document).ready(function(){
                     height: this.$.data("height") || 65,
                     displayInput: null == this.$.data("displayinput") || this.$.data("displayinput"),
                     displayPrevious: this.$.data("displayprevious"),
-                    fgColor: this.$.data("fgcolor") || "#b57c00",
+                    fgColor: this.$.data("fgcolor") || "#7a412a",
                     inputColor: this.$.data("inputcolor"),
                     font: this.$.data("font") || "Arial",
                     fontWeight: this.$.data("font-weight") || "bold",

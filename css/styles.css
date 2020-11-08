@@ -324,3 +324,17 @@ h3 {
 .knob-container {
     width: fit-content;
 }
+
+.drumEffects{
+    float: left;
+padding-left: 100px;
+}
+
+.synthEffects{
+    padding-left: 500px;
+    
+}
+
+#compThreshKnob{
+    padding: 20px;
+}

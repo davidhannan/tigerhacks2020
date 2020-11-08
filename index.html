@@ -184,13 +184,32 @@
     <div class="lettuce"></div>
 
     <div class="bottom-bun">
-      <div class="text-xs-center">
-        <div style="display:inline;width:200px;height:200px;">
-          <input type="text" value="75" class="knob basic-dial"
-            style="width: 104px; height: 66px; position: absolute; vertical-align: middle; margin-top: 66px; border: 0px; background: none; font: bold 40px Arial; text-align: center; color: rgb(135, 206, 235); padding: 0px; appearance: none; margin-left: -152px;">
+      <div class="drumEffects">
+        <div class="drumCompKnobs">
+          <label for="compThreshKnob">Threshold</label>
+          <input type="text" value="75" class="knob basic-dial" id="compThreshKnob">
+          <label for="compRatioKnob">Ratio</label>
+          <input type="text" value="75" class="knob basic-dial" id="compRatioKnob">
         </div>
+        <label for="drumDistortionKnob">Distortion</label>
+        <input type="text" value="75" class="knob basic-dial" id="drumDistortionKnob">
+        <label for="drumreverbAmount">Reverb</label>
+        <input type="text" value="75" class="knob basic-dial" id="drumreverbAmount">
       </div>
-
+      <div class="synthEffects">
+        <div class="synthChorusKnobs">
+          <label for="synthChorusFreqKnob">Frequency</label>
+          <input type="text" value="75" class="knob basic-dial" id="synthChorusFreqKnob">
+          <label for="synthChorusDelayKnob">Delay</label>
+          <input type="text" value="75" class="knob basic-dial" id="synthChorusDelayKnob">
+          <label for="synthChorusDepthKnob">Depth</label>
+          <input type="text" value="75" class="knob basic-dial" id="synthChorusDepthKnob">
+        </div>
+        <label for="synthPitchKnob">Pitch</label>
+        <input type="text" value="75" class="knob basic-dial" id="synthPitchKnob">
+        <label for="synthFilterFreqKnob">Filter Frequency</label>
+        <input type="text" value="75" class="knob basic-dial" id="synthFilterFreqKnob">
+      </div>
     </div>
 
     <div class="buttons">
