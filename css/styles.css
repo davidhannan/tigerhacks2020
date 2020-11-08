@@ -294,6 +294,8 @@ h3 {
     align-content: center;
     position: absolute;
     bottom: 5px;
+    right: 0px;
+    left: 0px;
     margin: auto;
     margin-top: 10px;
 }
