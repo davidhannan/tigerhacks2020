@@ -186,41 +186,88 @@
 
     <div class="bottom-bun">
       <div class="drumEffects">
+
         <div class="drumCompKnobs">
-          <label for="compThreshKnob">Threshold</label>
-          <input type="text" value="75" class="knob basic-dial" id="compThreshKnob">
-          <label for="compRatioKnob">Ratio</label>
-          <input type="text" value="75" class="knob basic-dial" id="compRatioKnob">
+
+          <div class="input-dv">
+            <label class="input-label" for="compThreshKnob">
+              <input type="text" value="0" class="knob basic-dial" id="compThreshKnob">
+              Threshold 
+            </label>
+          </div>
+
+          <div class="input-dv">
+            <label class="input-label" for="compRatioKnob">
+              <input type="text" value="0" class="knob basic-dial" id="compRatioKnob">
+              Ratio</label>
+          </div>
+
+          <div class="input-dv">
+            <label class="input-label" for="drumDistortionKnob">
+              <input  type="text" value="0" class="knob basic-dial" id="drumDistortionKnob">
+              Distortion</label>
+          </div>
+
+          <div class="input-dv">
+            <label class="input-label" for="drumreverbAmount">
+              <input  type="text" value="0" class="knob basic-dial" id="drumreverbAmount">
+              Reverb</label>
+          </div>
         </div>
-        <label for="drumDistortionKnob">Distortion</label>
-        <input type="text" value="75" class="knob basic-dial" id="drumDistortionKnob">
-        <label for="drumreverbAmount">Reverb</label>
-        <input type="text" value="75" class="knob basic-dial" id="drumreverbAmount">
+        
       </div>
+
       <div class="synthEffects">
         <div class="synthChorusKnobs">
-          <label for="synthChorusFreqKnob">Frequency</label>
-          <input type="text" value="75" class="knob basic-dial" id="synthChorusFreqKnob">
-          <label for="synthChorusDelayKnob">Delay</label>
-          <input type="text" value="75" class="knob basic-dial" id="synthChorusDelayKnob">
-          <label for="synthChorusDepthKnob">Depth</label>
-          <input type="text" value="75" class="knob basic-dial" id="synthChorusDepthKnob">
-        </div>
-        <label for="synthPitchKnob">Pitch</label>
-        <input type="text" value="75" class="knob basic-dial" id="synthPitchKnob">
-        <label for="synthFilterFreqKnob">Filter Frequency</label>
-        <input type="text" value="75" class="knob basic-dial" id="synthFilterFreqKnob">
-      </div>
-    </div>
 
-    <div class="buttons">
+          <div class="input-dv">
+            <label class="input-label" for="synthChorusFreqKnob">
+              <input type="text" value="0" class="knob basic-dial" id="synthChorusFreqKnob">
+              Frequency</label>
+          </div>
+
+          <div class="input-dv">
+            <label class="input-label" for="synthChorusDelayKnob">
+              <input type="text" value="0" class="knob basic-dial" id="synthChorusDelayKnob">
+              Delay</label>
+          </div>
+
+          <div class="input-dv">
+            <label class="input-label" for="synthChorusDepthKnob">
+              <input type="text" value="0" class="knob basic-dial" id="synthChorusDepthKnob">
+              Depth</label>
+          </div>
+
+          <div class="input-dv">
+            <label class="input-label" for="synthPitchKnob">
+              <input type="text" value="0" class="knob basic-dial" id="synthPitchKnob">
+              Pitch</label>
+          </div>
+
+          <div class="input-dv">
+            <label class="input-label" for="synthFilterFreqKnob">
+              <input type="text" value="0" class="knob basic-dial" id="synthFilterFreqKnob">
+              Filter Frequency</label>
+          </div>
+        </div>
+        
+      </div>
+        
+      </div>
+
+      <div class="buttons">
       <!-- <button id="load"> Load </button> -->
       <button id="play"> Play </button>
       <button id="stop"> Stop </button>
       <button id="generate"> Generate New Beat </button>
     </div>
+    </div>
+    
   </div>
+  
   <div class="instructions">
+    
+
     <h3>Instructions:</h3>
     <p id="desc">
       Create a pattern with the sesame seed buttons, press play to listen to the pattern you have created.

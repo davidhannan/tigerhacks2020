@@ -28,7 +28,7 @@ body {
     background-color: goldenrod;
     border-radius: 0px 0px 200px 200px;
     margin: auto;
-    padding-top: 20px;
+    padding-top: 10px;
 }
 
 .patty {
@@ -203,6 +203,7 @@ button {
 .buttons {
     text-align: center;
     align-content: center;
+    margin-top: 10px;
 }
 
 .slider {
@@ -284,14 +285,17 @@ p {
 h3 {
     font-family: 'Open Sans', sans-serif;
     font-style: oblique;
+    margin-top: 0;
+    margin-bottom: 0;;
 }
 
 .instructions {
     text-align: center;
     align-content: center;
     position: absolute;
-    bottom: 10px;
+    bottom: 5px;
     margin: auto;
+    margin-top: 10px;
 }
 
 .burger-container {
@@ -327,7 +331,8 @@ h3 {
 
 .drumEffects{
     float: left;
-padding-left: 100px;
+    padding-left: 20px;
+    width: 250px;
 }
 
 .synthEffects{
@@ -337,4 +342,37 @@ padding-left: 100px;
 
 #compThreshKnob{
     padding: 20px;
+    display: inline-block;
+    /* width: 6em; */
+    position: relative;
+    /* top: -3em; */
+}
+.input-div{
+    float: left;
+}
+.input-label{
+    display: inline-block;
+    float: left;
+    width: 6em;
+    /* margin-right: .5em; */
+    text-align: center;
+    /* padding-top: 1.5em; */
+}
+.synthEffects{
+    width:300px;
+    float:left;
+    padding-left: 20px;
+}
+.drumCompKnobs{
+    float:left;
+}
+.drumCompKnobs{
+    margin-left: 80px;
+    width: 200px;
+}
+
+.synthChorusKnobs{
+    margin-left: 150px;
+    width: 320px;
+}
 }
