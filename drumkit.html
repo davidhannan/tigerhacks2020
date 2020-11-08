@@ -307,7 +307,7 @@
 		  }
 		  p{
 			font-family: 'Open Sans', sans-serif;
-			width: 70%;
+			width: 100%;
 			margin: auto;;
 		  }
 		  h3{
@@ -317,9 +317,15 @@
 		.instructions{
 			text-align: center;
 		align-content: center;
-		position: absolute;
-		bottom: 10px;
+		/* position: absolute;
+		bottom: 10px; */
 		}	
+		.container{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -55%);
+		}
 		
 
 	</style>
@@ -327,19 +333,8 @@
 
 <body>
 
-	<div id="clouds">
-		
-		<div class="cloud x1"><img src="favicon.ico" alt=""> </div>
-		<!-- Time for multiple clouds to dance around -->
-		<div class="cloud x2"><img src="favicon.ico" alt=""> </div>
-		<div class="cloud x3"><img src="favicon.ico" alt=""></div>
-		<div class="cloud x4"><img src="favicon.ico" alt=""></div>
-		<div class="cloud x5"><img src="favicon.ico" alt=""></div>
-
-
-		
-	</div>
 	
+	<div class="container">
 	<div class="drum-container">
 		<div class="drum-row">
 			<div class="drum-row-title" id="label_0">
@@ -586,6 +581,7 @@
 			create new beats.
 		</p>
 	</div>
+</div>
 
 	<script type="text/javascript"
 		src="https://cdn.jsdelivr.net/npm/@magenta/music@1.4.2/dist/magentamusic.min.js"></script>
