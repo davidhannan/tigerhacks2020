@@ -526,3 +526,12 @@ $(document).ready(function(){
         }).parent()
     }
 });
+
+$("#compThreshKnob").data("min",-100);
+$("#compThreshKnob").data("max",0);
+
+$("#synthFilterFreqKnob").data("max",30000);
+$("#synthFilterFreqKnob").data("min",0);
+
+$("#synthPitchKnob").data("min",-24);
+$("#synthPitchKnob").data("max",24);

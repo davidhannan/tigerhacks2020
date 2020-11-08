@@ -353,15 +353,16 @@ h3 {
 .input-label{
     display: inline-block;
     float: left;
-    width: 6em;
+    width: 100px;
     /* margin-right: .5em; */
     text-align: center;
     /* padding-top: 1.5em; */
+    
 }
 .synthEffects{
     width:300px;
     float:left;
-    padding-left: 20px;
+    padding-left: 80px;
 }
 .drumCompKnobs{
     float:left;
@@ -372,8 +373,8 @@ h3 {
 }
 
 .synthChorusKnobs{
-    margin-left: 80px;
-    width: 400px;
+    margin-left: 40px;
+    width: 450px;
 }
 select{
     width: 100%;

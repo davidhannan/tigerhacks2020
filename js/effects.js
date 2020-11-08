@@ -76,7 +76,7 @@ document.querySelector("#drumDistortionKnob").addEventListener("mod", function()
 document.querySelector("#drumreverbAmount").addEventListener("mod", function(){
     drumReverbAmt = document.querySelector("#drumreverbAmount").value/10;
     loadDrumConnections()
-    //console.log(drumReverbAmt);
+    console.log(drumReverbAmt);
 });
 
 var leadPitchShiftAmt = 0;
@@ -84,35 +84,48 @@ var leadPitchShiftAmt = 0;
     var leadChorusDelay = 0;
     var leadChorusDepth = 0;
     var leadFilterFreq = 30000;
+    var leadReverbAmt = 0;
+    var filterType = "lowpass";
 
 function loadLeadConnections() {
     
 
     var pitchShift = new Tone.PitchShift(leadPitchShiftAmt);
     var chorus = new Tone.Chorus(leadChorusFreq, leadChorusDelay, leadChorusDepth);
-    var filter = new Tone.Filter(leadFilterFreq, "lowpass");
+    var filter = new Tone.Filter(leadFilterFreq, filterType);
+    var reverb = new Tone.JCReverb(leadReverbAmt)
 
-    lead_synth.chain(pitchShift,chorus,filter,Tone.Destination); 
+    lead_synth.chain(pitchShift,chorus,filter, reverb,Tone.Destination); 
 }
 
 document.querySelector("#synthChorusFreqKnob").addEventListener("mod", function(){
     leadChorusFreq = document.querySelector("#synthChorusFreqKnob").value;
-    loadDrumConnections()
-    //console.log(leadChorusFreq);
+    loadLeadConnections()
+        //console.log(leadChorusFreq);
 });
 
 document.querySelector("#synthChorusDelayKnob").addEventListener("mod", function(){
     leadChorusDelay = document.querySelector("#synthChorusDelayKnob").value;
-    loadDrumConnections()
+    loadLeadConnections()
     //console.log(leadChorusDelay);
 });
 document.querySelector("#synthChorusDepthKnob").addEventListener("mod", function(){
     leadChorusDepth = document.querySelector("#synthChorusDepthKnob").value;
-    loadDrumConnections()
+    loadLeadConnections()
     //console.log(leadChorusDepth);
 });
 document.querySelector("#synthPitchKnob").addEventListener("mod", function(){
     leadPitchShiftAmt = document.querySelector("#synthPitchKnob").value;
-    loadDrumConnections()
+    loadLeadConnections()
     //console.log(leadPitchShiftAmt);
+});
+document.querySelector("#synthReverbKnob").addEventListener("mod", function(){
+    leadReverbAmt = document.querySelector("#synthReverbKnob").value/10;
+    loadLeadConnections()
+    //console.log(leadReverbAmt);
+});
+document.querySelector("#filterType").addEventListener("change", function(){
+    filterType = document.querySelector("#filterType").value;
+    loadLeadConnections()
+    console.log(filterType);
 });
