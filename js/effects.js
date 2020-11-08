@@ -48,7 +48,8 @@ var drumCompThresh = -30;
     var drumReverbAmt = 0.0;
 
 function loadDrumConnections() {
-
+    drumChannel.disconnect();
+    
     drum_kick.connect(drumChannel);
     drum_snare.connect(drumChannel);
     drum_hihat_closed.connect(drumChannel);
@@ -100,8 +101,8 @@ var leadPitchShiftAmt = 0;
     var filterType = "lowpass";
 
 function loadLeadConnections() {
+    lead_synth.disconnect();
     
-
     var pitchShift = new Tone.PitchShift(leadPitchShiftAmt);
     var chorus = new Tone.Chorus(leadChorusFreq, leadChorusDelay, leadChorusDepth);
     var filter = new Tone.Filter(leadFilterFreq, filterType);
