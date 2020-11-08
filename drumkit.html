@@ -578,14 +578,6 @@
 			<div class="pickle-right"></div>
 		</div>
 
-<<<<<<< HEAD
-		<div class="buttons">
-			<!-- <button id="load"> Load </button> -->
-			<button id="play"> Play </button>
-			<button id="stop"> Stop </button>
-			<button id="generate"> Generate New Beat </button>
-		</div>
-=======
 		<div class="cheese">
 			<span class="cheese-corner-right">▾</span>
 		</div>
@@ -606,7 +598,6 @@
 			<button id="stop"> Stop </button>
 			<button id="generate"> Generate New Beat </button>
 		</div>
->>>>>>> caf27a740187f8e7ff75dfaf560540a890532dd1
 	</div>
 	<div class="instructions">
 		<h3>Instructions:</h3>
@@ -662,7 +653,8 @@
 
 		const lead_gain = new Tone.Gain(GAIN_LEAD);
 		var lead_synth = new Tone.Synth()
-		loadDrumConnections();
+		loadLeadConnections();
+
 		function loadLeadConnections() {
 
 			var cheb = new Tone.Chebyshev(40);
@@ -671,7 +663,7 @@
 
 			var pitchShift = new Tone.PitchShift(-4);
 			var chorus = new Tone.Chorus(10, 5, 0.5);
-			var filter = new Tone.Filter(400, "lowpass");
+			var filter = new Tone.Filter(2000, "lowpass");
 
 			cheb.connect(pitchShift);
 			pitchShift.connect(chorus);
@@ -741,19 +733,20 @@
 			"sounds/drum-kits/" + kitType + "/clap.mp3",
 			"sounds/drum-kits/" + kitType + "/ride.mp3"
 		];
+		var drum_kick, drum_snare, drum_hihat_closed, drum_hihat_open, drum_tom_low, drum_tom_mid, drum_tom_high, drum_clap, drum_ride;
 
 		loadPlayers();
 
 		function loadPlayers() {
-			drum_kick = new Tone.Player(instrument_player[0])
+			drum_kick = new Tone.Player(instrument_player[0]);
 			drum_snare = new Tone.Player(instrument_player[1]);
-			drum_hihat_closed = new Tone.Player(instrument_player[2])
-			drum_hihat_open = new Tone.Player(instrument_player[3])
-			drum_tom_low = new Tone.Player(instrument_player[4])
-			drum_tom_mid = new Tone.Player(instrument_player[5])
-			drum_tom_high = new Tone.Player(instrument_player[6])
-			drum_clap = new Tone.Player(instrument_player[7])
-			drum_ride = new Tone.Player(instrument_player[8])
+			drum_hihat_closed = new Tone.Player(instrument_player[2]);
+			drum_hihat_open = new Tone.Player(instrument_player[3]);
+			drum_tom_low = new Tone.Player(instrument_player[4]);
+			drum_tom_mid = new Tone.Player(instrument_player[5]);
+			drum_tom_high = new Tone.Player(instrument_player[6]);
+			drum_clap = new Tone.Player(instrument_player[7]);
+			drum_ride = new Tone.Player(instrument_player[8]);
 		}
 		var drumChannel = new Tone.Channel(0, 0);
 		loadDrumConnections();
@@ -1014,12 +1007,8 @@
 
 		//sequenceInit is called from runtime though it shouldnt be later on
 
-		page.addEventListener("load", function(){
-
-			sequenceInit();
-			runArp();
-			console.log("initialize")
-		});
+		sequenceInit();
+		runArp();
 		let sequence;
 
 		async function sequenceInit() {
