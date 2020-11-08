@@ -28,6 +28,13 @@ function loadPlayers() {
 }
 var drumChannel = new Tone.Channel(0, 0);
 
+var drumCompThresh = -30;
+    var drumCompRatio = 3;
+
+    var drumDistortionAmt = 0.03;
+
+    var drumReverbAmt = 0.0;
+
 function loadDrumConnections() {
 
     drum_kick.connect(drumChannel);
@@ -40,28 +47,46 @@ function loadDrumConnections() {
     drum_clap.connect(drumChannel);
     drum_ride.connect(drumChannel);
 
-    var drumCompThresh = -30;
-    var drumCompRatio = 3;
+    
 
-    var drumDistortionAmt = 0.03;
-
-    var drumReverbAmt = 0.0;
-
-    var compressor = new Tone.Compressor(drumCompThresh, drumCompRatio).toDestination();
+    var compressor = new Tone.Compressor(drumCompThresh, drumCompRatio);
     var drumDistortion = new Tone.Distortion(drumDistortionAmt);
     var drumReverb = new Tone.JCReverb(drumReverbAmt);
 
     drumChannel.chain(drumReverb,drumDistortion,compressor, Tone.Destination);
 
+    
 }
 
-function loadLeadConnections() {
+document.querySelector("#compThreshKnob").addEventListener("mod", function(){
+    drumCompThresh = document.querySelector("#compThreshKnob").value;
+    loadDrumConnections()
+    console.log(drumCompThresh);
+});
+document.querySelector("#compRatioKnob").addEventListener("mod", function(){
+    drumCompRatio = document.querySelector("#compRatioKnob").value;
+    loadDrumConnections()
+    //console.log(drumCompRatio);
+});
+document.querySelector("#drumDistortionKnob").addEventListener("mod", function(){
+    drumDistortionAmt = document.querySelector("#drumDistortionKnob").value;
+    loadDrumConnections()
+    //console.log(drumDistortionAmt);
+});
+document.querySelector("#drumreverbAmount").addEventListener("mod", function(){
+    drumReverbAmt = document.querySelector("#drumreverbAmount").value/10;
+    loadDrumConnections()
+    //console.log(drumReverbAmt);
+});
 
-    var leadPitchShiftAmt = 0;
+var leadPitchShiftAmt = 0;
     var leadChorusFreq = 0;
     var leadChorusDelay = 0;
     var leadChorusDepth = 0;
     var leadFilterFreq = 30000;
+
+function loadLeadConnections() {
+    
 
     var pitchShift = new Tone.PitchShift(leadPitchShiftAmt);
     var chorus = new Tone.Chorus(leadChorusFreq, leadChorusDelay, leadChorusDepth);
@@ -69,3 +94,25 @@ function loadLeadConnections() {
 
     lead_synth.chain(pitchShift,chorus,filter,Tone.Destination); 
 }
+
+document.querySelector("#synthChorusFreqKnob").addEventListener("mod", function(){
+    leadChorusFreq = document.querySelector("#synthChorusFreqKnob").value;
+    loadDrumConnections()
+    //console.log(leadChorusFreq);
+});
+
+document.querySelector("#synthChorusDelayKnob").addEventListener("mod", function(){
+    leadChorusDelay = document.querySelector("#synthChorusDelayKnob").value;
+    loadDrumConnections()
+    //console.log(leadChorusDelay);
+});
+document.querySelector("#synthChorusDepthKnob").addEventListener("mod", function(){
+    leadChorusDepth = document.querySelector("#synthChorusDepthKnob").value;
+    loadDrumConnections()
+    //console.log(leadChorusDepth);
+});
+document.querySelector("#synthPitchKnob").addEventListener("mod", function(){
+    leadPitchShiftAmt = document.querySelector("#synthPitchKnob").value;
+    loadDrumConnections()
+    //console.log(leadPitchShiftAmt);
+});

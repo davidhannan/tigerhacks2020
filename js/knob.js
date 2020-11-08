@@ -17,12 +17,13 @@ $(document).ready(function(){
         rtl: rtl,
         change: function(value) {
             //console.log("change : " + value);
-            var evt = new CustomEvent('change');
-            this.$[0].dispatchEvent(evt);
+            
         },
         release: function(value) {
             //console.log(this.$.attr('value'));
             // console.log("release : " + value);
+            var evt = new CustomEvent('mod');
+            this.$[0].dispatchEvent(evt);
         },
         cancel: function() {
             // console.log("cancel : ", this);
