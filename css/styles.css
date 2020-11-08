@@ -153,8 +153,6 @@ body {
     height: 25px;
     margin: auto;
     position: relative;
-    font-weight: 600;
-    font-style: oblique;
 }
 
 .drum-row-title {
@@ -207,14 +205,14 @@ button {
     align-content: center;
 }
 
-.temperature-slider {
+.slider {
     float: left;
     -webkit-appearance: none;
     display: block;
     margin: 0 auto;
     margin-bottom: 10px;
     margin-left: 10px;
-    width: 45%;
+    width: 250px;
     height: 15px;
     background-image: linear-gradient(to right, goldenrod, lightgoldenrodyellow);
     outline: none;
@@ -225,11 +223,11 @@ button {
     border: 1px solid lightgray;
 }
 
-.temperature-slider:hover {
+.slider:hover {
     opacity: .7;
 }
 
-.temperature-slider::-webkit-slider-thumb {
+.slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 25px;
@@ -240,7 +238,7 @@ button {
     border: 1px solid black;
 }
 
-.temperature-slider::-moz-range-thumb {
+.slider::-moz-range-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 25px;
@@ -251,48 +249,24 @@ button {
     border: 1px solid black;
 }
 
-.tempo-slider {
-    float: right;
-    -webkit-appearance: none;
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 10px;
-    margin-right: 10px;
-    width: 45%;
-    height: 15px;
-    background-image: linear-gradient(to right, goldenrod, lightgoldenrodyellow);
-    outline: none;
-    opacity: 0.5;
-    border-radius: 40px;
-    -webkit-transition: 1s;
-    transition: opacity .4s;
-    border: 1px solid lightgray;
+.slider-container {
+    width: fit-content;
+    margin: auto;
+    margin-top: -40px;
+    margin-bottom: 0px;
+    position: relative;
 }
 
-.tempo-slider:hover {
-    opacity: .7;
+.temperature-title{
+    position: absolute;
+    top: -60px;
+    left: 60px; 
 }
 
-.tempo-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #f0d0a5;
-    cursor: pointer;
-    border: 1px solid black;
-}
-
-.tempo-slider::-moz-range-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #f0d0a5;
-    cursor: pointer;
-    border: 1px solid black;
+.tempo-title{
+    position: absolute;
+    top: -60px;
+    right: 60px; 
 }
 
 .instructions:before {
@@ -317,14 +291,17 @@ h3 {
     align-content: center;
     position: absolute;
     bottom: 10px;
+    margin: auto;
 }
 
-.container {
+.burger-container {
     margin: 0;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -60%);
+    font-weight: 600;
+    font-style: oblique;
 }
 
 .select {
@@ -342,4 +319,8 @@ h3 {
     width: 100%;
     overflow: hidden;
     border: none;
+}
+
+.knob-container {
+    width: fit-content;
 }
