@@ -6,7 +6,7 @@ var ts_num = 4;
 var ts_den = 4;
 var tempo = 115;
 
-const TIME_FUTURE = 1.00;
+const TIME_FUTURE = 0.50;
 const start = 8;
 var count = start;
 var playing = false;

@@ -54,11 +54,14 @@ body {
 }
 
 .cheese-corner-right {
-    height: 40px;
-    margin-top: 25px;
+    width: 0;
+height: 0;
+border-style: solid;
+border-width: 80px 50px 0 50px;
+border-color: #fdd928 transparent transparent transparent;
     position: absolute;
-    top: -110px;
-    right: 10px;
+    top: 15px;
+    right: 20px;
 }
 
 .lettuce {
@@ -159,7 +162,6 @@ body {
 .drum-row-title {
     width: 150px;
     margin: 0px;
-    padding-right: 30px;
     position: absolute;
     left: -170px;
 }
