@@ -1,4 +1,4 @@
 # tigerhacks2020
 
 
-https://burgerbeats.online/
+https://burgerbeats.xyz/
